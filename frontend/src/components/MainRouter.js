@@ -8,6 +8,7 @@ import Faq from "./Faq";
 import Login from "./Login";
 import ProductDisplay from './Productdisplay';
 import logout from './Logout';
+import Registerseller from './Register_seller';
 const Mainrouter = () => {
     return (
         <Switch>
@@ -19,6 +20,7 @@ const Mainrouter = () => {
             <Route path="/login" component={Login}/>
             <Route path="/logout" component={logout}/>
             <Route path="/productdisplay/:productId" component={ProductDisplay}/>
+            <Route path="/register_seller" component={Registerseller}/>
         </Switch>
     );
 }
