@@ -2,7 +2,7 @@ import React, { useEffect, useState }from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Alert from './alert';
-import Loadingspinner from './Loadingspinner';
+import Loadingspinner from './loadingspinner';
 function Login(){
     const [status,setloggedstatus]=useState('');
     const [criteriaerror,setcriteriaerror] = useState('');

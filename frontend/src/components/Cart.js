@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
-import Loadingspinner from './Loadingspinner';
+import Loadingspinner from './loadingspinner';
 class Cart extends React.Component{
 	constructor(props){
 		super(props);
