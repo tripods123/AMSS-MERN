@@ -6,7 +6,7 @@ function Header(){
 	useEffect(()=>{
 		axios({
 			method:'GET',
-			url:'http://localhost:5000/auth/getlinks',
+			url:'https://amss-backend.herokuapp.com/auth/getlinks',
 			withCredentials:true
 		}).then((response)=>{
 			setLinks(response.data);
