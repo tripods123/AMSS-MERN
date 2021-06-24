@@ -14,10 +14,11 @@ function Header(){
 			setLinks([]);
 		})
 	},[]);
+	//get links from backend
     return (
 		<nav className='navbar navbar-expand-lg navbar-light' style={{'backgroundColor':'#B0E0E6'}}>
             <div className='container-fluid'>
-                <a className='navbar-brand' style={{'color':'#C71585'}} href='/'>Opticonnect</a>
+                <a className='navbar-brand' style={{'color':'#C71585'}} href='/'>AMSS</a>
 				<button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarToggler' aria-controls='navbarToggler' aria-expanded='false' aria-label='Toggle navigation'>
       				<span className='navbar-toggler-icon'></span>
     			</button>
@@ -35,6 +36,9 @@ function Header(){
 					</div>
                 </div>
             </div>
+			<div>
+
+			</div>
         </nav>
     );
   }
