@@ -1,7 +1,7 @@
 const { request } = require('express');
 const express = require('express');
 const router = express.Router();
-const auth = require('../controllers/authenticationcontroller');
+const auth = require('../controller/authenticationcontroller');
 const verifyToken = require('./verifyToken');
 
 router.get("/getstatus",auth.checkstatus);
