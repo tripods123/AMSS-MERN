@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../App.css';
 function Header(){
-	const [links,setLinks]=useState([]);
+	const llinks = [
+		{title:'Home', path:'/'},
+		{ title: `About us`, path: `/about` },
+		{ title: `Product`, path: `/product/all/1` },
+		{ title: `FAQ`, path: `/faq` },
+		{ title: `Login`, path: `/login` }];
+	//const [links,setLinks]=useState([]);
 	useEffect(()=>{
 		// axios({
 		// 	method:'GET',
