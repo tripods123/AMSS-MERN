@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import Alert from './alert';
+import Alert from './Alert';
 import {Link} from 'react-router-dom';
 function Register_seller(){
     const [availability, setusernameavailability] = useState('');

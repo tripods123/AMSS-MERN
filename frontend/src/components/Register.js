@@ -1,13 +1,12 @@
 import React, { useEffect, useState }from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Alert from './alert';
+import Alert from './Alert';
 import Loadingspinner from './Loadingspinner';
-function Login(){
+function Register(){
     const [status,setloggedstatus]=useState('');
     const [criteriaerror,setcriteriaerror] = useState('');
     const [passwordmatch,setpasswordmatcherror] = useState('');
-    const [loginerror,setloginerror]=useState('');
     const [registererror,setregistererror]=useState('');
 
     //for user registration
@@ -88,28 +87,7 @@ function Login(){
         }
     }
     // for login
-    const [logusername,setlogusername]=useState('');
-    const [logpassword,setlogpassword]=useState('');
-    const [typeofuser,settypeofuser]=useState('Customer');
-    const submitValueLog = (e) => {
-        e.preventDefault();
-        axios({
-            method: 'POST',
-            url: 'http://localhost:5000/auth/signin',
-            withCredentials: true,
-            data: {
-                'username' : logusername,
-                'password' : logpassword,
-                'typeofuser':typeofuser
-            }
-          }).then((response) => {
-                window.location='http://localhost:3000/';
-          }, (error) => {
-                if(error.response.status===404){
-                    setloginerror('Username or password is wrong');
-                }
-          });
-    }
+    
     if(status===''){
         return(<Loadingspinner/>);
     }else if(status===true){
@@ -119,27 +97,7 @@ function Login(){
             <div style={{'height':'100%'}}>
                 <div className='container'>
                     <div className='row align-items-center'>
-                        <div className='col-sm'>
-                            <h1 className='display-6'>Login to your account</h1>
-                            <form onSubmit={submitValueLog}>
-                                <input className='form-control' placeholder='Username' id='username' type='text' onChange={e => setlogusername(e.target.value)}/><br/>
-                                <input className='form-control' placeholder='Password' id='password' type='password' onChange={e => setlogpassword(e.target.value)} required/><br/>
-                                <br/>
-                                <div className='form-check form-check-inline'>
-                                    <input type='radio' className='form-check-input' name='typeofuser' id='customer' value='customer' onChange={e => settypeofuser(e.target.value)}/>
-                                    <label htmlFor='customer' className='form-check-label' style={{'color':'#000000'}}>Customer</label>
-                                </div>
-                                <div className='form-check form-check-inline'>
-                                    <input type='radio' className='form-check-input' name='typeofuser' value='seller' onChange={e => settypeofuser(e.target.value)}/>
-                                    <label htmlFor='seller' className='form-check-label' style={{'color':'#000000'}}>Seller</label>
-                                </div>
-                                {loginerror === ''?null:<Alert message={loginerror} type='danger'/>}
-                                <br/><button tag='input' type='submit' className='btn btn-primary'>Submit</button>
-                            </form>
-                        </div>
-                        <div className='col-sm text-center'>
-                            <h1 className='display-6'>OR</h1>
-                        </div><br/>
+                        <div className='col-sm'/>
                         <div className='col-sm'>
                             <h1 className='display-6'>New User Signup!</h1>
                             <form onSubmit={e =>submitValueRegister(e)}>
@@ -159,10 +117,11 @@ function Login(){
                                 <button type='submit' className='btn btn-primary'>Signup</button>
                             </form>
                         </div>
+                        <div className='col-sm'/>
                     </div>
                 </div>       
             </div>             
         );
     }
 }
-export default Login;
+export default Register;

@@ -5,9 +5,9 @@ import Cart from "./Cart";
 import Product from "./Product";
 import About from "./About";
 import Faq from "./Faq";
-import Login from "./Login";
 import ProductDisplay from './Productdisplay';
 import logout from './Logout';
+import Register from './Register';
 import Registerseller from './Register_seller';
 const Mainrouter = () => {
     return (
@@ -17,7 +17,7 @@ const Mainrouter = () => {
             <Route path="/cart"  component={Cart}/>
             <Route path="/product/:type/:page"  component={Product}/>
             <Route path="/faq"  component={Faq}/>
-            <Route path="/login" component={Login}/>
+            <Route path="/registercustomer" component={Register}/>
             <Route path="/logout" component={logout}/>
             <Route path="/productdisplay/:productId" component={ProductDisplay}/>
             <Route path="/register_seller" component={Registerseller}/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Carousel from './carousel';
-import Alert from './alert';
+import Alert from './Alert';
 class ProductDisplay extends React.Component{
 	constructor(props){
 		super(props);
