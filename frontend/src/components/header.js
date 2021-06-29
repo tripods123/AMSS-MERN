@@ -2,6 +2,7 @@ import React, { useEffect} from 'react';
 import Loginmodal from './LoginModal';
 import '../App.css';
 import {Link} from 'react-router-dom';
+
 function Header(){
 	const links = [
 		{title:'Home', path:'/'},
