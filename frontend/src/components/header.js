@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loginmodal from './LoginModal';
 import '../App.css';
+import {Link} from 'react-router-dom';
 function Header(){
-	const [links,setLinks]=useState([]);
+	const links = [
+		{title:'Home', path:'/'},
+		{ title: `About us`, path: `/about` },
+		{ title: `Product`, path: `/product/all/1` },
+		{ title: `FAQ`, path: `/faq` },
+		{ title: `Login`, path: `/login` }];
+	//const [links,setLinks]=useState([]);
 	useEffect(()=>{
 		axios({
 			method:'GET',
@@ -26,10 +34,18 @@ function Header(){
 					<div className='ms-auto p-2 bd-highlight'>
                     	<ul className='navbar-nav mb-2 mb-lg-0'>
 							{links.length !== 0 ? links.map(({title,path})=>(
-								<li className='nav-item' key={title}>
-									<a className='nav-link' style={{'color':'#750D37'}} aria-current='page' href={path}>
+								title==='Login'?
+									<li className='nav-item' key={title}>
+										<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+											{title}
+										</Link>
+										<Loginmodal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"/>
+									</li>
+								:
+									<li className='nav-item' key={title}>
+									<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' href={path}>
 										{title}
-									</a>
+									</Link>
 								</li>
 							)):null}
                 	    </ul>

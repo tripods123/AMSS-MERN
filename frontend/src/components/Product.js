@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidefilter from './sidefilter';
 import axios from 'axios';
-import Singleproductlist from './single_product_list';
+import Singleproductlist from './Singleproductlist';
 export default class Product extends React.Component{
 	constructor(props){
 		super(props);
