@@ -48,9 +48,9 @@ exports.create=function (req, res) {
     });
 };
 exports.available=function (req, res) {
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
-        const db = client.db('opticonnect');
+        const db = client.db('amss');
         (async ()=>{
             const user = await db.collection('customer').find({ "username": req.params.username }, { $exists: true }).toArray();
             if(user.length > 0){
