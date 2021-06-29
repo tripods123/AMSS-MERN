@@ -38,7 +38,7 @@ export default function Loginmodal(props){
           });
     }
     return(
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel">
                 <div className="modal-dialog modal-fullscreen-sm-down">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -51,7 +51,7 @@ export default function Loginmodal(props){
                             <form onSubmit={submitValueLog}>
                                 <input className='form-control' placeholder='Username' id='username' type='text' onChange={e => setlogusername(e.target.value)}/><br/>
                                 <div className="input-group mb-3">
-                                    <input className='w-75 p-3' className='form-control' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
+                                    <input className='form-control' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
                                     <i className="btn btn-outline-secondary" onClick={togglePasswordVisiblity}>{eye}</i>  
                                 </div>
                                 <Link  className="float-end" to="/registercustomer" data-bs-dismiss="modal">Forgot Password?</Link>

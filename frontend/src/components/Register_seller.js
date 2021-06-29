@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Alert from './Alert';
-import {Link} from 'react-router-dom';
 function Register_seller(){
     const [availability, setusernameavailability] = useState('');
     const [criteriaerror, setcriteriaerror] = useState('');
     const [passwordmatch, setpasswordmatcherror] = useState('');
     const [error, seterror] = useState('');
     
-    const [states, setstates] = useState([]);
-    const [cities, setcities] = useState([]);
+//    const [states, setstates] = useState([]);
+//    const [cities, setcities] = useState([]);
 
     const [phone, setphone] = useState('');
     const [username, setusername] = useState('');
