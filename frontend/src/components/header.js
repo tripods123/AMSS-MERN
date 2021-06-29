@@ -12,15 +12,15 @@ function Header(){
 		{ title: `Login`, path: `/login` }];
 	//const [links,setLinks]=useState([]);
 	useEffect(()=>{
-		axios({
-			method:'GET',
-			url:'https://amss-backend.herokuapp.com/auth/getlinks',
-			withCredentials:true
-		}).then((response)=>{
-			setLinks(response.data);
-		}).catch((error)=>{
-			setLinks([]);
-		})
+		// axios({
+		// 	method:'GET',
+		// 	url:'https://amss-backend.herokuapp.com/auth/getlinks',
+		// 	withCredentials:true
+		// }).then((response)=>{
+		// 	setLinks(response.data);
+		// }).catch((error)=>{
+		// 	setLinks([]);
+		// })
 	},[]);
 	//get links from backend
     return (

@@ -1,9 +1,9 @@
 import React, { useEffect, useState }from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Alert from './alert';
-import Loadingspinner from './loadingspinner';
-function Login(){
+import Alert from './Alert';
+import Loadingspinner from './Loadingspinner';
+function Register(){
     const [status,setloggedstatus]=useState('');
     const [criteriaerror,setcriteriaerror] = useState('');
     const [passwordmatch,setpasswordmatcherror] = useState('');
