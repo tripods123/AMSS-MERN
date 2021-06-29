@@ -3,6 +3,7 @@ const app=express();
 const cors=require('cors');
 const cookieParser=require('cookie-parser');
 const authRouter = require('./routes/authenticationroutes');
+const userRouter = require('./routes/userroutes');
 
 const bodyParser = require('body-parser');
 const corsOptions = {
@@ -20,4 +21,5 @@ app.use(cookieParser());
 app.set('trust proxy', 1);
 
 app.use("/auth",authRouter);
+app.use("/user",userRouter);
 app.listen(process.env.PORT || 5000, process.env.HOST || '::');
