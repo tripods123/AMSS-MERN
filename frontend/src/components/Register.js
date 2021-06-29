@@ -43,7 +43,7 @@ function Register() {
             axios({
                 method: 'GET',
                 url: 'https://amss-backend.herokuapp.com/user/availability/' + regusername,
-                withCredentials: true,
+                withCredentials: true
             }).then((response) => {
                 setavailability(response.data);
             }).catch((error) => {
