@@ -15,12 +15,8 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.9",
     "nodemon": "^2.0.7"
-=======
-    "mongodb": "^3.6.9"
->>>>>>> 2bdfa0917fff638fec9b79b58cc21b63f3ff4816
   }
 }
