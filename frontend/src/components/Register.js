@@ -42,7 +42,7 @@ function Register(){
         if(regusername!==''){
             axios({
                 method: 'GET',
-                url: 'http://localhost:5000/user/availability/'+regusername,
+                url: 'https://amss-backend.herokuapp.com/user/availability/'+regusername,
             }).then((response)=>{
                 setavailability(response.data);
             }).catch((error)=>{
