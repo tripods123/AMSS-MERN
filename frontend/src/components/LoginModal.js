@@ -38,23 +38,23 @@ export default function Loginmodal(props){
           });
     }
     return(
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen-sm-down">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Login to</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-fullscreen-sm-down">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Login to</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <h1 className='display-7'>Automobile Seller</h1>
                             <br/>
                             <form onSubmit={submitValueLog}>
                                 <input className='form-control' placeholder='Username' id='username' type='text' onChange={e => setlogusername(e.target.value)}/><br/>
-                                <div class="input-group mb-3">
-                                    <input class='w-75 p-3' className='form-control' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
-                                    <i class="btn btn-outline-secondary" onClick={togglePasswordVisiblity}>{eye}</i>  
+                                <div className="input-group mb-3">
+                                    <input className='w-75 p-3' className='form-control' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
+                                    <i className="btn btn-outline-secondary" onClick={togglePasswordVisiblity}>{eye}</i>  
                                 </div>
-                                <Link  class="float-end" to="/registercustomer" data-bs-dismiss="modal">Forgot Password?</Link>
+                                <Link  className="float-end" to="/registercustomer" data-bs-dismiss="modal">Forgot Password?</Link>
                                 <br/>
                                 <div className='form-check form-check-inline'>
                                     <input type='radio' className='form-check-input' name='typeofuser' id='customer' value='customer' onChange={e => settypeofuser(e.target.value)}/>
@@ -68,7 +68,7 @@ export default function Loginmodal(props){
                                 <br/>
                                 <center>
                                 <div className="d-inline float-left">
-                                    <button tag='input' type='submit' class='btn btn-primary fs-6 w-auto h-auto'>Login</button>
+                                    <button tag='input' type='submit' className='btn btn-primary fs-6 w-auto h-auto'>Login</button>
                                 </div>
                                 </center>
                                 <div className="d-inline p-2 float-left">
