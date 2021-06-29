@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect ,useState } from "react";
 import axios from 'axios';
 import Alert from './Alert';
 function Register_seller(){
@@ -7,8 +7,8 @@ function Register_seller(){
     const [passwordmatch, setpasswordmatcherror] = useState('');
     const [error, seterror] = useState('');
     
-//    const [states, setstates] = useState([]);
-//    const [cities, setcities] = useState([]);
+    const [states, setstates] = useState([]);
+    const [cities, setcities] = useState([]);
 
     const [phone, setphone] = useState('');
     const [username, setusername] = useState('');
@@ -21,6 +21,16 @@ function Register_seller(){
     const [email, setemail] = useState('');
     const [fullname, setfullname] = useState('');
     const [address, setaddress] = useState('');
+    useEffect(() => {
+        axios({
+            url: 'https://amss-backend.herokuapp.com/',
+            method:'GET'
+        }).then((response) => {
+            setstates(response.data);
+        }).catch((error) => {
+            console.error(error);
+        })
+    },[])
     const selectState = (e) =>{
         setstate(e.target.value);
         axios({
