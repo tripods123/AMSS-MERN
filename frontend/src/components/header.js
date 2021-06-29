@@ -36,14 +36,14 @@ function Header(){
 							{links.length !== 0 ? links.map(({title,path})=>(
 								title==='Login'?
 									<li className='nav-item' key={title}>
-										<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+										<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' to="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 											{title}
 										</Link>
 										<Loginmodal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"/>
 									</li>
 								:
 									<li className='nav-item' key={title}>
-									<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' href={path}>
+									<Link className='nav-link' style={{'color':'#750D37'}} aria-current='page' to={path}>
 										{title}
 									</Link>
 								</li>

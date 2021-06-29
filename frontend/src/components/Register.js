@@ -38,7 +38,7 @@ function Register(){
             }
         }
     }
-    const checkabailability=()=>{
+    const checkavailability=()=>{
         if(regusername!==''){
             axios({
                 method: 'GET',
@@ -51,6 +51,8 @@ function Register(){
         }
     }
     useEffect(()=>{
+        const cl1= document.getElementById('close1');
+        cl1.click();
         axios({
             method: 'GET',
             url: 'http://localhost:5000/auth/getstatus',
@@ -86,7 +88,6 @@ function Register(){
             });
         }
     }
-    // for login
     
     if(status===''){
         return(<Loadingspinner/>);
@@ -103,7 +104,10 @@ function Register(){
                             <form onSubmit={e =>submitValueRegister(e)}>
                                 <input type="text" className='form-control' placeholder="Name" onChange={e => setname(e.target.value)} required/><br/>
                                 <input type="email" className='form-control' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
-                                <input type="text" className='form-control' placeholder="Username" onChange={e => setregusername(e.target.value)} required/><br/><button onClick={checkabailability} className='btn btn-primary'>Check availability</button>
+                                <div className="input-group mb-3">
+                                    <input type="text" className='form-control' placeholder="Username" onChange={e => setregusername(e.target.value)} required/>
+                                    <button onClick={checkavailability} className='btn btn-primary'>Check</button>
+                                </div>
                                 {availability===true ? <Alert message='Username available' type='success'/>: availability === false ? <Alert message='Username not available' type='danger'/> :null}
                                 <br/>
                                 <input type="password" className='form-control' placeholder="Password" onChange={e => setregpassword(e.target.value)} onKeyUp={checkpasswordstrength} required/><br/>
@@ -115,6 +119,7 @@ function Register(){
                                 <small><Link to="/registerseller">Want to sell with us ?</Link></small><br/><br/>
                                 {registererror!==''?<Alert message='Internal server error' type='danger'/>:null}
                                 <button type='submit' className='btn btn-primary'>Signup</button>
+
                             </form>
                         </div>
                         <div className='col-sm'/>

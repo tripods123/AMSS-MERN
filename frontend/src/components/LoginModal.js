@@ -66,16 +66,18 @@ export default function Loginmodal(props){
                                 </div><br/>
                                 {loginerror === ''?null:<Alert message={loginerror} type='danger'/>}
                                 <br/>
-                                <div class="d-inline float-left">
+                                <center>
+                                <div className="d-inline float-left">
                                     <button tag='input' type='submit' class='btn btn-primary fs-6 w-auto h-auto'>Login</button>
                                 </div>
-                                <div class="d-inline p-2 float-left">
-                                    <p class='fs-6' >New to site? <Link class='fs-6' to="/registercustomer" data-bs-dismiss="modal">Signup</Link></p>
+                                </center>
+                                <div className="d-inline p-2 float-left">
+                                    <p className='fs-6' >New to site? <Link className='fs-6' to="/registercustomer">Signup</Link></p>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" id="close1" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
