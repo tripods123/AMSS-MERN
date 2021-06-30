@@ -102,7 +102,7 @@ function Register() {
                         <div className='col-sm' />
                         <div className='col-sm'>
                             <h1 className='display-6'>New User Signup!</h1>
-                            <form onSubmit={e => submitValueRegister(e)}>
+                            <form>
                                 <input type="text" className='form-control' placeholder="Name" onChange={e => setname(e.target.value)} required /><br />
                                 <input type="email" className='form-control' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />
                                 <div className="input-group mb-3">
@@ -119,7 +119,7 @@ function Register() {
                                 <textarea className='form-control' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br />
                                 <small><Link to="/registerseller">Want to sell with us ?</Link></small><br /><br />
                                 {registererror !== '' ? <Alert message='Internal server error' type='danger' /> : null}
-                                <button type='submit' className='btn btn-primary'>Signup</button>
+                                <button onClick={e =>submitValueRegister(e)}className='btn btn-primary'>Signup</button>
 
                             </form>
                         </div>
