@@ -109,7 +109,7 @@ function Register_seller(){
             <div className='row align-items-center'>
                 <div className='col-sm'></div>
                 <div className='col-sm'><br/>
-                    <h1 className='display-7'>New User Signup!</h1>
+                    <h1 className='display-7'>New Seller Signup!</h1>
                     <br/>
                     <form onSubmit={onFormValueSubmit} className="needs-validation" novalidate>
                         <input type="text" className='form-control' placeholder="Full Name" onChange={e => setfullname(e.target.value)} required/><br/>
