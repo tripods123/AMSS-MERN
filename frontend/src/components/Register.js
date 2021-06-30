@@ -107,7 +107,7 @@ function Register() {
                                 <input type="email" className='form-control' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />
                                 <div className="input-group mb-3">
                                     <input type="text" className='form-control' placeholder="Username" onChange={e => setregusername(e.target.value)} required />
-                                    <button onClick={checkavailability} className='btn btn-primary'>Check</button>
+                                    <button onClick={e => checkavailability()} className='btn btn-primary'>Check</button>
                                 </div>
                                 {availability === true ? <Alert message='Username available' type='success' /> : availability === false ? <Alert message='Username not available' type='danger' /> : null}
                                 <br />
