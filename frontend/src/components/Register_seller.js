@@ -111,7 +111,7 @@ function Register_seller(){
                 <div className='col-sm'><br/>
                     <h1 className='display-7'>New Seller Signup!</h1>
                     <br/>
-                    <form onSubmit={onFormValueSubmit} className="needs-validation" novalidate>
+                    <form onSubmit={onFormValueSubmit}>
                         <input type="text" className='form-control' placeholder="Full Name" onChange={e => setfullname(e.target.value)} required/><br/>
                         <input type="email" className='form-control' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
                         <div className="input-group mb-3">

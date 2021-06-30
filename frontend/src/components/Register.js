@@ -121,7 +121,7 @@ function Register() {
                                 {passwordmatch === true ? <Alert message='Passwords do not match' type='danger' /> : passwordmatch === false ? <Alert message='Passwords match' type='success' /> : null}
                                 <input type="text" className='form-control' placeholder="Phone" onChange={e => setphone(e.target.value)} required /><br />
                                 <textarea className='form-control' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br />
-                                <small><Link to="/registerseller">Want to sell with us ?</Link></small><br /><br />
+                                <large><Link to="/registerseller">Want to sell with us ?</Link></large><br /><br />
                                 {registererror !== '' ? <Alert message='Internal server error' type='danger' /> : null}
                                 <button onClick={e =>submitValueRegister(e)}className='btn btn-primary'>Signup</button>
                             </form>
