@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Alert from './Alert';
 import Loadingspinner from './Loadingspinner';
 function Register() {
+    const history = useHistory();
     const [status, setloggedstatus] = useState('');
     const [criteriaerror, setcriteriaerror] = useState('');
     const [passwordmatch, setpasswordmatcherror] = useState('');
@@ -38,7 +39,8 @@ function Register() {
             }
         }
     }
-    const checkavailability = () => {
+    const checkavailability = (e) => {
+        e.preventDefault();
         if (regusername !== '') {
             axios({
                 method: 'GET',
@@ -56,7 +58,7 @@ function Register() {
         cl1.click();
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/auth/getstatus',
+            url: 'https://amss-backend.herokuapp.com/auth/getstatus',
         }).then((response) => {
             setloggedstatus(true);
         }).catch((error) => {
@@ -68,7 +70,7 @@ function Register() {
         if (availability === true && criteriaerror === false && passwordmatch === false) {
             axios({
                 method: 'POST',
-                url: 'http://localhost:5000/user/create',
+                url: 'https://amss-backend.herokuapp.com/user/create',
                 withCredentials: true,
                 data: {
                     'name': name,
@@ -79,7 +81,7 @@ function Register() {
                     'address': address
                 }
             }).then((response) => {
-                window.location = 'http://localhost:3000/';
+                history.push('/');
             }).catch((error) => {
                 if (error !== undefined) {
                     if (error.response.status === 500) {
@@ -93,7 +95,7 @@ function Register() {
     if (status === '') {
         return (<Loadingspinner />);
     } else if (status === true) {
-        return (window.location = 'http://localhost:3000/');
+        return (<Redirect to="/"/>);
     } else {
         return (
             <div style={{ 'height': '100%' }}>
@@ -107,10 +109,10 @@ function Register() {
                                 <input type="email" className='form-control' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />
                                 <div className="input-group mb-3">
                                     <input type="text" className='form-control' placeholder="Username" onChange={e => setregusername(e.target.value)} required />
-                                    <button onClick={e => checkavailability()} className='btn btn-primary'>Check</button>
+                                    <button onClick={e => checkavailability(e)} className='btn btn-primary'>Check</button>
                                 </div>
                                 {availability === true ? <Alert message='Username available' type='success' /> : availability === false ? <Alert message='Username not available' type='danger' /> : null}
-                                <br />
+                                <br/>
                                 <input type="password" className='form-control' placeholder="Password" onChange={e => setregpassword(e.target.value)} onKeyUp={checkpasswordstrength} required /><br />
                                 {criteriaerror === true ? <Alert message='Passwords do not match criteria' type='danger' /> : criteriaerror === false ? <Alert message='Passwords match criteria' type='success' /> : null}
                                 <input type="password" className='form-control' placeholder="Confirm Password" onChange={e => setconfirmpassword(e.target.value)} onKeyUp={checkpasswords} required /><br />
@@ -120,7 +122,6 @@ function Register() {
                                 <small><Link to="/registerseller">Want to sell with us ?</Link></small><br /><br />
                                 {registererror !== '' ? <Alert message='Internal server error' type='danger' /> : null}
                                 <button onClick={e =>submitValueRegister(e)}className='btn btn-primary'>Signup</button>
-
                             </form>
                         </div>
                         <div className='col-sm' />
