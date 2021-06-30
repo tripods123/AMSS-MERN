@@ -103,7 +103,9 @@ function Register() {
                     <div className='row align-items-center'>
                         <div className='col-sm' />
                         <div className='col-sm'>
-                            <h1 className='display-6'>New User Signup!</h1>
+                            <br/>
+                            <h1 className='display-7'>New User Signup!</h1>
+                            <br/>
                             <form>
                                 <input type="text" className='form-control' placeholder="Name" onChange={e => setname(e.target.value)} required /><br />
                                 <input type="email" className='form-control' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />

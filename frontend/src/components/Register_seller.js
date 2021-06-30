@@ -62,11 +62,13 @@ function Register_seller(){
             }
         }
     }
-    const checkabailability=()=>{
+    const checkavailability=(e)=>{
+        e.preventDefault();
         if(username!==''){
             axios({
                 method: 'GET',
-                url: 'http://localhost:5000/user/availability/'+username,
+                url: 'http://amss-backend.herokuapp.com/user/availability/'+username,
+                withCredentials: true
             }).then((response)=>{
                 setusernameavailability(response.data);
             }).catch((error)=>{
@@ -106,11 +108,16 @@ function Register_seller(){
         <div className='container'>
             <div className='row align-items-center'>
                 <div className='col-sm'></div>
-                <div className='col-sm'>
-                    <form onSubmit={onFormValueSubmit}>
+                <div className='col-sm'><br/>
+                    <h1 className='display-7'>New User Signup!</h1>
+                    <br/>
+                    <form onSubmit={onFormValueSubmit} className="needs-validation" novalidate>
                         <input type="text" className='form-control' placeholder="Full Name" onChange={e => setfullname(e.target.value)} required/><br/>
                         <input type="email" className='form-control' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
-                        <input type="text" className='form-control' placeholder="Username" onChange={e => setusername(e.target.value)} required/><br/><button onClick={checkabailability} className='btn btn-primary'>Check availability</button>
+                        <div className="input-group mb-3">
+                            <input type="text" className='form-control' placeholder="Username" onChange={e => setusername(e.target.value)} required/>
+                            <button onClick={e=> checkavailability(e)} className='btn btn-primary'>Check</button>
+                        </div>
                         {availability===true ? <Alert message='Username available' type='success'/>: availability === false ? <Alert message='Username not available' type='danger'/> :null}
                         <br/>
                         <input type="password" className='form-control' placeholder="Password" onChange={e => setpassword(e.target.value)} onKeyUp={checkpasswordstrength} required/><br/>
@@ -126,11 +133,12 @@ function Register_seller(){
                                 return(<option value={state_name}>{state_name}</option>)
                             })}
                         </select>
+                        <br/>
                         <select className='form-select' onChange={e => setcity(e.target.value)}>
                             {cities.map((city_name)=>{
                                 return(<option value={city_name}>{city_name}</option>)
                             })}
-                        </select>
+                        </select><br/>
                         {error!==''?<Alert message='Internal server error' type='danger'/>:null}
                         <button type='submit' className='btn btn-primary'>Signup</button>
                     </form>

@@ -20,7 +20,7 @@ const Mainrouter = () => {
             <Route path="/registercustomer" component={Register}/>
             <Route path="/logout" component={logout}/>
             <Route path="/productdisplay/:productId" component={ProductDisplay}/>
-            <Route path="/register_seller" component={Registerseller}/>
+            <Route path="/registerseller" component={Registerseller}/>
         </Switch>
     );
 }
