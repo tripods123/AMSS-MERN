@@ -17,9 +17,9 @@ app.use(bodyParser.json());
 
 const saltRounds = 10;
 exports.create=function (req, res) {
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
-        const db = client.db('opticonnect');
+        const db = client.db('amss');
         bcrypt.genSalt(saltRounds, function(err, salt) {
             if(err)
                 return res.status(500).send(err);
