@@ -112,36 +112,36 @@ function Register_seller(){
                     <h1 className='display-7'>New Seller Signup!</h1>
                     <br/>
                     <form onSubmit={onFormValueSubmit}>
-                        <input type="text" className='form-control' placeholder="Full Name" onChange={e => setfullname(e.target.value)} required/><br/>
-                        <input type="email" className='form-control' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
+                        <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Full Name" onChange={e => setfullname(e.target.value)} required/><br/>
+                        <input type="email" className='form-control shadow p-3 bg-body rounded' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
                         <div className="input-group mb-3">
-                            <input type="text" className='form-control' placeholder="Username" onChange={e => setusername(e.target.value)} required/>
+                            <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Username" onChange={e => setusername(e.target.value)} required/>
                             <button onClick={e=> checkavailability(e)} className='btn btn-primary'>Check</button>
                         </div>
                         {availability===true ? <Alert message='Username available' type='success'/>: availability === false ? <Alert message='Username not available' type='danger'/> :null}
                         <br/>
-                        <input type="password" className='form-control' placeholder="Password" onChange={e => setpassword(e.target.value)} onKeyUp={checkpasswordstrength} required/><br/>
+                        <input type="password" className='form-control shadow p-3 bg-body rounded' placeholder="Password" onChange={e => setpassword(e.target.value)} onKeyUp={checkpasswordstrength} required/><br/>
                         {criteriaerror === true ? <Alert message='Passwords do not match criteria' type='danger'/>:criteriaerror === false? <Alert message='Passwords match criteria' type='success'/> :null}
-                        <input type="password" className='form-control' placeholder="Confirm Password" onChange={e => setconfirmpassword(e.target.value)} onKeyUp={checkpasswords} required/><br/>
+                        <input type="password" className='form-control shadow p-3 bg-body rounded' placeholder="Confirm Password" onChange={e => setconfirmpassword(e.target.value)} onKeyUp={checkpasswords} required/><br/>
                         {passwordmatch === true ? <Alert message='Passwords do not match' type='danger'/>:passwordmatch === false? <Alert message='Passwords match' type='success'/> :null}
-                        <input type="tel" className='form-control' placeholder="Phone" onChange={e => setphone(e.target.value)} required/><br/>
-                        <input type="text" className='form-control' placeholder="GST number" onChange={e => setgst(e.target.value)} required/><br/>
-                        <textarea className='form-control' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br/>
-                        <input type="text" className='form-control' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
-                        <select className='form-select' onChange={e => selectState(e)}>
+                        <input type="tel" className='form-control shadow p-3 bg-body rounded' placeholder="Phone" onChange={e => setphone(e.target.value)} required/><br/>
+                        <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="GST number" onChange={e => setgst(e.target.value)} required/><br/>
+                        <textarea className='form-control shadow p-3 bg-body rounded' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br/>
+                        <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
+                        <select className='form-select shadow p-3 bg-body rounded' onChange={e => selectState(e)}>
                             {states.map((state_name)=>{
                                 return(<option value={state_name}>{state_name}</option>)
                             })}
                         </select>
                         <br/>
-                        <select className='form-select' onChange={e => setcity(e.target.value)}>
+                        <select className='form-select shadow p-3 bg-body rounded' onChange={e => setcity(e.target.value)}>
                             {cities.map((city_name)=>{
                                 return(<option value={city_name}>{city_name}</option>)
                             })}
                         </select><br/>
                         {error!==''?<Alert message='Internal server error' type='danger'/>:null}
                         <button type='submit' className='btn btn-primary'>Signup</button>
-                    </form>
+                    </form><br/>
                 </div>
                 <div className='col-sm'></div>
             </div>

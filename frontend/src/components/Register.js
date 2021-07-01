@@ -54,8 +54,8 @@ function Register() {
         }
     }
     useEffect(() => {
-        const cl1 = document.getElementById('close1');
-        cl1.click();
+        // const cl1 = document.getElementById('close1');
+        // cl1.click();
         axios({
             method: 'GET',
             url: 'https://amss-backend.herokuapp.com/auth/getstatus',
@@ -107,24 +107,24 @@ function Register() {
                             <h1 className='display-7'>New User Signup!</h1>
                             <br/>
                             <form>
-                                <input type="text" className='form-control' placeholder="Name" onChange={e => setname(e.target.value)} required /><br />
-                                <input type="email" className='form-control' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />
+                                <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Name" onChange={e => setname(e.target.value)} required /><br />
+                                <input type="email" className='form-control shadow p-3 bg-body rounded' placeholder="Email" onChange={e => setemail(e.target.value)} required /><br />
                                 <div className="input-group mb-3">
-                                    <input type="text" className='form-control' placeholder="Username" onChange={e => setregusername(e.target.value)} required />
+                                    <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Username" onChange={e => setregusername(e.target.value)} required />
                                     <button onClick={e => checkavailability(e)} className='btn btn-primary'>Check</button>
                                 </div>
                                 {availability === true ? <Alert message='Username available' type='success' /> : availability === false ? <Alert message='Username not available' type='danger' /> : null}
                                 <br/>
-                                <input type="password" className='form-control' placeholder="Password" onChange={e => setregpassword(e.target.value)} onKeyUp={checkpasswordstrength} required /><br />
+                                <input type="password" className='form-control shadow p-3 bg-body rounded' placeholder="Password" onChange={e => setregpassword(e.target.value)} onKeyUp={checkpasswordstrength} required /><br />
                                 {criteriaerror === true ? <Alert message='Passwords do not match criteria' type='danger' /> : criteriaerror === false ? <Alert message='Passwords match criteria' type='success' /> : null}
-                                <input type="password" className='form-control' placeholder="Confirm Password" onChange={e => setconfirmpassword(e.target.value)} onKeyUp={checkpasswords} required /><br />
+                                <input type="password" className='form-control shadow p-3 bg-body rounded' placeholder="Confirm Password" onChange={e => setconfirmpassword(e.target.value)} onKeyUp={checkpasswords} required /><br />
                                 {passwordmatch === true ? <Alert message='Passwords do not match' type='danger' /> : passwordmatch === false ? <Alert message='Passwords match' type='success' /> : null}
-                                <input type="text" className='form-control' placeholder="Phone" onChange={e => setphone(e.target.value)} required /><br />
-                                <textarea className='form-control' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br />
+                                <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Phone" onChange={e => setphone(e.target.value)} required /><br />
+                                <textarea className='form-control shadow p-3 bg-body rounded' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br />
                                 <large><Link to="/registerseller">Want to sell with us ?</Link></large><br /><br />
                                 {registererror !== '' ? <Alert message='Internal server error' type='danger' /> : null}
                                 <button onClick={e =>submitValueRegister(e)}className='btn btn-primary'>Signup</button>
-                            </form>
+                            </form><br/>
                         </div>
                         <div className='col-sm' />
                     </div>

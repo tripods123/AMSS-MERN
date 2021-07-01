@@ -14,6 +14,10 @@ export default function Loginmodal(props){
           const togglePasswordVisiblity = () => {
             setPasswordShown(passwordShown ? false : true);
           };
+          const close = () => {
+                const cl1 = document.getElementById('close1');
+                cl1.click();
+          };
     const submitValueLog = (e) => {
         e.preventDefault();
         axios({
@@ -42,17 +46,17 @@ export default function Loginmodal(props){
                 <div className="modal-dialog modal-fullscreen-sm-down">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="staticBackdropLabel">Login to</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 className="modal-title" id="staticBackdropLabel" style={{'color':'#C71585'}}>Login to</h5>
+                            <button type="button" className="btn-close" id="close1" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <h1 className='display-7'>Automobile Seller</h1>
+                            <h1 className='display-7' style={{'color':'#0d6efd'}}>Automobile Seller</h1>
                             <br/>
                             <form onSubmit={submitValueLog}>
-                                <input className='form-control' placeholder='Username' id='username' type='text' onChange={e => setlogusername(e.target.value)}/><br/>
+                                <input className='form-control shadow p-2 bg-body rounded' placeholder='Username' id='username' type='text' onChange={e => setlogusername(e.target.value)}/><br/>
                                 <div className="input-group mb-3">
-                                    <input className='form-control' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
-                                    <i className="btn btn-outline-secondary" onClick={togglePasswordVisiblity}>{eye}</i>  
+                                    <input className='form-control shadow p-2 bg-body rounded' placeholder='Password' id='password' type={passwordShown ? "text" : "password"} onChange={e => setlogpassword(e.target.value)} required/>
+                                    <i className="btn btn-primary shadow p-2" onClick={togglePasswordVisiblity}>{eye}</i>  
                                 </div>
                                 <Link  className="float-end" to="/registercustomer" data-bs-dismiss="modal">Forgot Password?</Link>
                                 <br/>
@@ -67,18 +71,15 @@ export default function Loginmodal(props){
                                 {loginerror === ''?null:<Alert message={loginerror} type='danger'/>}
                                 <br/>
                                 <center>
-                                <div className="d-inline float-left">
                                     <button tag='input' type='submit' className='btn btn-primary fs-6 w-auto h-auto'>Login</button>
-                                </div>
                                 </center>
-                                <div className="d-inline p-2 float-left">
-                                    <p className='fs-6' >New to site? <Link className='fs-6' to="/registercustomer">Signup</Link></p>
-                                </div>
+                                <br/>
+                                <p className='fs-6' >New to site? <Link onClick={close} className='fs-6' to="/registercustomer">Signup</Link></p>
                             </form>
                         </div>
-                        <div className="modal-footer">
+                        {/* <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" id="close1" data-bs-dismiss="modal">Close</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
