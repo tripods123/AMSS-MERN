@@ -126,19 +126,32 @@ function Register_seller(){
                         {passwordmatch === true ? <Alert message='Passwords do not match' type='danger'/>:passwordmatch === false? <Alert message='Passwords match' type='success'/> :null}
                         <input type="tel" className='form-control shadow p-3 bg-body rounded' placeholder="Phone" onChange={e => setphone(e.target.value)} required/><br/>
                         <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="GST number" onChange={e => setgst(e.target.value)} required/><br/>
+                        <div className='mb-3'>
+                            <small>
+                                <label for="fileUpload" className='float-left'>Company Certificate in pdf only</label>
+                            </small>
+                            <input type="file" className='form-control shadow p-3 bg-body rounded' id="fileUpload" multiple/><br/>
+                        </div>
                         <textarea className='form-control shadow p-3 bg-body rounded' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br/>
                         <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
-                        <select className='form-select shadow p-3 bg-body rounded' onChange={e => selectState(e)}>
+                        <div className='input-group mb-3'>
+                        <select className='form-select shadow p-3' onChange={e => selectState(e)}>
                             {states.map((state_name)=>{
                                 return(<option value={state_name}>{state_name}</option>)
                             })}
                         </select>
+                        <span class="p-3 input-group-text bg-primary text-white shadow">States</span>
+                        </div>
                         <br/>
+                        <div className='input-group mb-3'>
                         <select className='form-select shadow p-3 bg-body rounded' onChange={e => setcity(e.target.value)}>
                             {cities.map((city_name)=>{
                                 return(<option value={city_name}>{city_name}</option>)
                             })}
-                        </select><br/>
+                        </select>
+                        <span class="p-3 input-group-text bg-primary text-white shadow">Cities&nbsp;</span>   
+                        </div>
+                        <br/>
                         {error!==''?<Alert message='Internal server error' type='danger'/>:null}
                         <button type='submit' className='btn btn-primary'>Signup</button>
                     </form><br/>

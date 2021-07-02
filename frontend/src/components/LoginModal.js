@@ -71,7 +71,7 @@ export default function Loginmodal(props){
                                 {loginerror === ''?null:<Alert message={loginerror} type='danger'/>}
                                 <br/>
                                 <center>
-                                    <button tag='input' type='submit' className='btn btn-primary fs-6 w-auto h-auto'>Login</button>
+                                    <button tag='input' type='submit' className='btn btn-primary fs-6 w-auto h-auto'>&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</button>
                                 </center>
                                 <br/>
                                 <p className='fs-6' >New to site? <Link onClick={close} className='fs-6' to="/registercustomer">Signup</Link></p>
