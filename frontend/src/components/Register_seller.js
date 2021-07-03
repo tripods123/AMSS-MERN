@@ -1,8 +1,10 @@
 import React, { useEffect ,useState } from "react";
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Alert from './Alert';
 import Loadingspinner from './Loadingspinner';
 function Register_seller(){
+    const [status, setloggedstatus] = useState('');
     const [availability, setusernameavailability] = useState('');
     const [criteriaerror, setcriteriaerror] = useState('');
     const [passwordmatch, setpasswordmatcherror] = useState('');
@@ -22,6 +24,16 @@ function Register_seller(){
     const [email, setemail] = useState('');
     const [fullname, setfullname] = useState('');
     const [address, setaddress] = useState('');
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            url: 'https://amss-backend.herokuapp.com/auth/getstatus',
+        }).then((response) => {
+            setloggedstatus(true);
+        }).catch((error) => {
+            setloggedstatus(false);
+        });
+    }, []);
     useEffect(() => {
         axios({
             url: 'https://amss-backend.herokuapp.com/',
