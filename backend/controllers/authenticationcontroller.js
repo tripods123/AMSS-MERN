@@ -27,7 +27,7 @@ exports.authenticate=function (req, res) {
         
     MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
-        const db = client.db('opticonnect');
+        const db = client.db('amss');
         const username=req.body.username;
         const password=req.body.password;
         if(req.body.typeofuser === "customer"){
