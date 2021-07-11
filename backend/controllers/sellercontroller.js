@@ -114,11 +114,11 @@ exports.states = function (res) {
         if (err) throw err
         const db = client.db('amss');
         (async ()=> {
-            const statescities =  await db.collection('StaesCities').find().toArray(); 
+            const statescities =  await db.collection('StatesCities').find().toArray(); 
             if(statescities.length>0){
-                return res.status(200).send(true);
+                return res.status(200).send(statescities);
             }else{
-                return res.status(200).send(false);
+                return res.status(200).send([]);
             }
         })();
     });

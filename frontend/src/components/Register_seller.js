@@ -52,15 +52,7 @@ function Register_seller(){
     }, []);
     const selectState = (e) =>{
         setstate(e.target.value);
-        axios({
-            method:'GET',
-            url:''+e.target.value,
-        }).then((response)=>{
-            setcities(response.data)
-            console.log(response);
-        }).catch((error)=>{
-            console.log(error)
-        })
+        setcities(states[e.target.value]);
     }
     const checkpasswordstrength = () =>{
         if(password!==''){
@@ -163,8 +155,8 @@ function Register_seller(){
                             <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
                             <div className='input-group mb-3'>
                             <select className='form-select shadow p-3' onChange={e => selectState(e)}>
-                                {states.map((state_name)=>{
-                                    return(<option value={state_name}>{state_name}</option>)
+                                {states.map(({key,state_name})=>{
+                                    return(<option value={key}>{key}</option>)
                                 })}
                             </select>
                             <span class="p-3 input-group-text bg-primary text-white shadow">States</span>
