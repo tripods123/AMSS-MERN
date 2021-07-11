@@ -12,7 +12,6 @@ const bcrypt = require('bcryptjs');
 require('firebase/storage');
 global.XMLHttpRequest=require('xhr2');
 const upload = multer({storage:multer.memoryStorage()}).single('image');
-const storageRef = firebase.storage().ref();
 const saltRounds = 10;
 const firebaseConfig = {
     apiKey: process.env.apiKey,
