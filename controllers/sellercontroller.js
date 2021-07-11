@@ -20,7 +20,7 @@ app.use(cors());
 app.use(bodyParser.json());
 exports.create=function (req, res) {
         
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         upload(req,res,function(err){
@@ -79,7 +79,7 @@ exports.create=function (req, res) {
         });
 };
 exports.available=function (req, res) {
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         (async()=>{
@@ -110,7 +110,7 @@ exports.isallowed=function (req, res) {
 };
 
 exports.states = function (res) {
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         (async ()=> {
