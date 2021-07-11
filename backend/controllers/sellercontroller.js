@@ -110,11 +110,12 @@ exports.isallowed=function (req, res) {
 };
 
 exports.states = function (res) {
+    console.log('here1')
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         (async ()=> {
-            const statescities =  await db.collection('StatesCities').find().toArray(); 
+            const statescities =  await db.collection('StatesCities').find({}).toArray(); 
             if(statescities.length>0){
                 return res.status(200).send(statescities);
             }else{
