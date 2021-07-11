@@ -40,7 +40,7 @@ exports.create=function (req, res) {
                     if(customer.insertedCount===1){
                         const payload = {'_id': customer.insertedId,type:'customer','username':req.body.username}
                         let token = jwt.sign(payload, key,{expiresIn: '72h'});
-                        return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none'}).send('OK');
+                        return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none', secure:true}).send('OK');
                     }
                 })();
             });
