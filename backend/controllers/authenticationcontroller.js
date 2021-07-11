@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 */
 exports.authenticate=function (req, res) {
         
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         const username=req.body.username;

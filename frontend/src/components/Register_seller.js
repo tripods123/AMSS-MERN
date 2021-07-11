@@ -27,25 +27,29 @@ function Register_seller(){
     const [shopname, setshopname] = useState('');
     const [address, setaddress] = useState('');
     useEffect(() => {
-        axios({
-            method: 'GET',
-            url: 'https://amss-backend.herokuapp.com/auth/getstatus',
-        }).then((response) => {
-            setloggedstatus(true);
-        }).catch((error) => {
-            setloggedstatus(false);
-        });
+        const getstatecities = () => {
+            axios({
+                url: 'https://amss-backend.herokuapp.com/seller/statescities',
+                method:'GET'
+            }).then((response) => {
+                setstates(response.data);
+            }).catch((error) => {
+                console.error(error);
+            })    
+        }
+        const getstatus = () => {
+            axios({
+                method: 'GET',
+                url: 'https://amss-backend.herokuapp.com/auth/getstatus',
+            }).then((response) => {
+                setloggedstatus(true);
+            }).catch((error) => {
+                setloggedstatus(false);
+            });   
+        }
+        getstatecities();
+        getstatus();
     }, []);
-    useEffect(() => {
-        axios({
-            url: 'https://amss-backend.herokuapp.com/seller/statescities',
-            method:'GET'
-        }).then((response) => {
-            setstates(response.data);
-        }).catch((error) => {
-            console.error(error);
-        })
-    },[])
     const selectState = (e) =>{
         setstate(e.target.value);
         axios({
