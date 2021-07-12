@@ -159,7 +159,7 @@ function Register_seller(){
                                     return(<option value={key}>{key}</option>)
                                 })}
                             </select>
-                            <span class="p-3 input-group-text bg-primary text-white shadow">States</span>
+                            <span className="p-3 input-group-text bg-primary text-white shadow">States</span>
                             </div>
                             <br/>
                             <div className='input-group mb-3'>
