@@ -1,11 +1,11 @@
-const express = require('express');
+import express, { urlencoded } from 'express';
 const app = express();
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const authRouter = require('./routes/authenticationroutes');
-const userRouter = require('./routes/userroutes');
-const sellerRouter = require('./routes/sellerroutes');
-const bodyParser = require('body-parser');
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import authRouter from './routes/authenticationroutes';
+import userRouter from './routes/userroutes';
+import sellerRouter from './routes/sellerroutes';
+import { json } from 'body-parser';
 const corsOptions = {
   origin: [
     "http://localhost:3000",
@@ -15,8 +15,8 @@ const corsOptions = {
   credentials: true
 }
 
-app.use(bodyParser.json());
-app.use(express.urlencoded({extended:false}));
+app.use(json());
+app.use(urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.set('trust proxy', 1);
