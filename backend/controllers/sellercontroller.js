@@ -133,4 +133,4 @@ exports.statescities = function (req,res) {
             }
         })();
     });
-}
+};
