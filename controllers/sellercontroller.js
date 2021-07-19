@@ -11,8 +11,12 @@ import cookieParser from 'cookie-parser';
 import { genSalt, hash as _hash } from 'bcryptjs';
 import 'firebase/storage';
 global.XMLHttpRequest=require('xhr2');
+
+const upload = multer({storage:multer.memoryStorage()}).single('image');
+
 const upload = multer({storage:memoryStorage()}).single('image');
 const storageRef = _storage().ref();
+
 const saltRounds = 10;
 const firebaseConfig = {
     apiKey: process.env.apiKey,
@@ -23,6 +27,12 @@ const firebaseConfig = {
     appId: process.env.appId,
     measurementId: process.env.measurementId
 };
+<<<<<<< HEAD
+=======
+
+firebase.initializeApp(firebaseConfig);
+const storageRef = firebase.storage().ref();
+>>>>>>> 6cc61e078b7a450c33ae53f44a824be2c0fae098
 
 firebase.initializeApp(firebaseConfig);
 const storageRef = firebase.storage().ref();
@@ -31,7 +41,7 @@ app.use(cors());
 app.use(json());
 export function create (req, res) {
         
-    MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         upload(req,res,function(err){
@@ -88,9 +98,15 @@ export function create (req, res) {
                 }
             });
         });
+<<<<<<< HEAD
+};
+exports.available=function (req, res) {
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
+=======
 }
 export function available (req, res) {
     MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+>>>>>>> 4f72e437894181817d0204f41acc7debf7d41e8e
         if (err) throw err
         const db = client.db('amss');
         (async()=>{
@@ -120,12 +136,18 @@ export function isallowed (req, res) {
     }
 }
 
+<<<<<<< HEAD
+exports.states = function (req,res) {
+    console.log('here1')
+    MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
+=======
 export function statescities (res) {
     MongoClient.connect(process.env.MONGO_URI,{ useUnifiedTopology: true }, function (err, client) {
+>>>>>>> 4f72e437894181817d0204f41acc7debf7d41e8e
         if (err) throw err
         const db = client.db('amss');
         (async ()=> {
-            const statescities =  await db.collection('StatesCities').find().toArray(); 
+            const statescities =  await db.collection('StatesCities').find({}).toArray(); 
             if(statescities.length>0){
                 return res.status(200).send(statescities);
             }else{
