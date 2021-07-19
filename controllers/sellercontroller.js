@@ -14,7 +14,18 @@ global.XMLHttpRequest=require('xhr2');
 const upload = multer({storage:memoryStorage()}).single('image');
 const storageRef = _storage().ref();
 const saltRounds = 10;
+const firebaseConfig = {
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
+};
 
+firebase.initializeApp(firebaseConfig);
+const storageRef = firebase.storage().ref();
 app.use(cookieParser);
 app.use(cors());
 app.use(json());
