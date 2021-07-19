@@ -11,12 +11,12 @@ import cookieParser from 'cookie-parser';
 import { genSalt, hash as _hash } from 'bcryptjs';
 import 'firebase/storage';
 global.XMLHttpRequest=require('xhr2');
-<<<<<<< HEAD
+
 const upload = multer({storage:multer.memoryStorage()}).single('image');
-=======
+
 const upload = multer({storage:memoryStorage()}).single('image');
 const storageRef = _storage().ref();
->>>>>>> 4f72e437894181817d0204f41acc7debf7d41e8e
+
 const saltRounds = 10;
 const firebaseConfig = {
     apiKey: process.env.apiKey,
