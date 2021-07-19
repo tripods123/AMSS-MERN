@@ -9,6 +9,7 @@ import ProductDisplay from './Productdisplay';
 import logout from './Logout';
 import Register from './Register';
 import Registerseller from './Register_seller';
+import Sellerhomepage from './Sellerhomepage'
 const Mainrouter = () => {
     return (
         <Switch>
@@ -21,6 +22,7 @@ const Mainrouter = () => {
             <Route path="/logout" component={logout}/>
             <Route path="/productdisplay/:productId" component={ProductDisplay}/>
             <Route path="/registerseller" component={Registerseller}/>
+            <Route path="/sellerhomepage" component={Sellerhomepage}/>
         </Switch>
     );
 }

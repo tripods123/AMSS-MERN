@@ -32,7 +32,11 @@ function Register_seller(){
                 url: 'https://amss-backend.herokuapp.com/seller/statescities',
                 method:'GET'
             }).then((response) => {
-                setstates(response.data);
+                setstates(response.data[0]);
+                setcities(response.data[0]['Andaman and Nicobar Islands'])
+                setcity(response.data[0]['Andaman and Nicobar Islands'][0])
+                const pre_def_state = Object.keys(response.data[0]);
+                setstate(pre_def_state[0])
             }).catch((error) => {
                 console.error(error);
             })    
@@ -122,7 +126,11 @@ function Register_seller(){
     } else if (status === true) {
         return (<Redirect to="/"/>);
     } else {
+        if(states!==undefined && states!==[]){
+            delete states["_id"];
+        }
         return(
+            
             <div className='container'>
                 <div className='row align-items-center'>
                     <div className='col-sm'></div>
@@ -155,17 +163,17 @@ function Register_seller(){
                             <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
                             <div className='input-group mb-3'>
                             <select className='form-select shadow p-3' onChange={e => selectState(e)}>
-                                {states.map(({key,state_name})=>{
-                                    return(<option value={key}>{key}</option>)
+                                {Object.keys(states).map((key)=>{
+                                    return(<option key={key} value={key}>{key}</option>)
                                 })}
                             </select>
-                            <span class="p-3 input-group-text bg-primary text-white shadow">States</span>
+                            <span className="p-3 input-group-text bg-primary text-white shadow">States</span>
                             </div>
                             <br/>
                             <div className='input-group mb-3'>
                             <select className='form-select shadow p-3 bg-body rounded' onChange={e => setcity(e.target.value)}>
                                 {cities.map((city_name)=>{
-                                    return(<option value={city_name}>{city_name}</option>)
+                                    return(<option value={city_name} key={city_name}>{city_name}</option>)
                                 })}
                             </select>
                             <span className="p-3 input-group-text bg-primary text-white shadow">Cities&nbsp;</span>   
