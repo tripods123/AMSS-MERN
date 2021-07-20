@@ -24,6 +24,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 const storageRef = firebase.storage().ref();
 
 app.use(cookieParser);
@@ -90,11 +91,13 @@ exports.create=function (req, res) {
         });
 };
 exports.available=function (req, res) {
+    console.log("here2");
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         (async()=>{
             const seller = await db.collection('seller').find({ "username": req.params.username }, { $exists: true }).toArray();
+            console.log("here3");
             if(seller.length > 0){
                 return res.status(200).send(false);
             }else{
