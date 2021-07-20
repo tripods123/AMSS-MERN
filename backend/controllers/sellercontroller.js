@@ -24,7 +24,6 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 const storageRef = firebase.storage().ref();
 
 app.use(cookieParser);
