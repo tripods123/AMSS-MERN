@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import authRouter from './routes/authenticationroutes';
-import userRouter from './routes/userroutes';
-import sellerRouter from './routes/sellerroutes';
-import { json } from 'body-parser';
+const cors =require('cors');
+const cookieParser = require('cookie-parser');
+const authRouter = require('./routes/authenticationroutes');
+const userRouter = require('./routes/userroutes');
+const sellerRouter = require('./routes/sellerroutes');
+const bodyparser = require('body-parser');
 const corsOptions = {
   origin: [
     "http://localhost:3000",
@@ -15,7 +15,7 @@ const corsOptions = {
   credentials: true
 }
 
-app.use(json());
+app.use(bodyparser.json());
 app.use(epress.urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
