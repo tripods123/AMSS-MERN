@@ -1,19 +1,19 @@
-import express from 'express';
+const express = require('express');
 const app = express();
-import { json } from 'body-parser';
-import cors from 'cors';
-import { MongoClient } from "mongodb";
-import { sign, verify } from 'jsonwebtoken';
-import cookieParser from 'cookie-parser';
-import { genSalt, hash as _hash } from 'bcryptjs';
-// get config consts
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const { MongoClient, ObjectId } = require("mongodb");
+const multer=require('multer');
+const jwt=require('jsonwebtoken');
 const key='09f26e402586e2faa8da4c98a35f1b20d6b033c6097befa8be3486a829587fe2f90a832bd3ff9d42710a4da095a2ce285b009f0c3730cd9b8e1af3eb84df6611';
-
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 // access config const
 app.use(cookieParser);
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
 const saltRounds = 10;
 export function create (req, res) {
