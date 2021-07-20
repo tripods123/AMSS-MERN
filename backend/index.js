@@ -13,7 +13,7 @@ const corsOptions = {
     "https://peaceful-stonebraker-22525a.netlify.app"
   ],
   credentials: true
-}
+};
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended:false}));
