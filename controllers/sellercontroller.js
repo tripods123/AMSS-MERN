@@ -107,8 +107,8 @@ exports.isallowed=function (req, res) {
     }
 };
 
-exports.states = function (req,res) {
-    console.log('here1')
+exports.states = function (res) {
+    console.log('here1');
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
@@ -121,4 +121,4 @@ exports.states = function (req,res) {
             }
         })();
     });
-}
+};
