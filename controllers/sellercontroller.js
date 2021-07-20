@@ -13,16 +13,16 @@ require('firebase/storage');
 global.XMLHttpRequest=require('xhr2');
 const upload = multer({storage:multer.memoryStorage()}).single('image');
 const saltRounds = 10;
-
 const firebaseConfig = {
-    apiKey: "AIzaSyA1bsP6LZ1COelq_AwXjdrDMLYks6bHOq0",
-    authDomain: "amss-d9ffa.firebaseapp.com",
-    projectId: "amss-d9ffa",
-    storageBucket: "amss-d9ffa.appspot.com",
-    messagingSenderId: "14966452873",
-    appId: "1:14966452873:web:58d1552eeb19af1efb4c58",
-    measurementId: "G-X0BYJKXV19"
-  };
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
+};
+
 firebase.initializeApp(firebaseConfig);
 const storageRef = firebase.storage().ref();
 
@@ -120,8 +120,8 @@ exports.isallowed=function (req, res) {
     }
 };
 
-exports.statescities = function (req,res) {
-    console.log("here1");
+exports.states = function (req,res) {
+    console.log('here1')
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
@@ -134,4 +134,4 @@ exports.statescities = function (req,res) {
             }
         })();
     });
-};
+}
