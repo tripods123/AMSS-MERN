@@ -89,7 +89,8 @@ exports.available=function (req, res) {
             }   
         })();
     });
-}
+};
+
 exports.isallowed=function (req, res) {
     const token = req.cookies.token;
     if(token){
