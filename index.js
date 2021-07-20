@@ -23,4 +23,4 @@ app.set('trust proxy', 1);
 app.use("/auth",authRouter);
 app.use("/user",userRouter);
 app.use("/seller",sellerRouter);
-app.listen(process.env.PORT || 5000, process.env.HOST || '::');a
+app.listen(process.env.PORT || 5000, process.env.HOST || '::');
