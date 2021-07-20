@@ -1,4 +1,4 @@
-import express, { urlencoded } from 'express';
+import express from 'express';
 const app = express();
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -16,7 +16,7 @@ const corsOptions = {
 }
 
 app.use(json());
-app.use(urlencoded({extended:false}));
+app.use(epress.urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.set('trust proxy', 1);
