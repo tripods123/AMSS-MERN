@@ -22,20 +22,14 @@ const firebaseConfig = {
     appId: process.env.appId,
     measurementId: process.env.measurementId
 };
-<<<<<<< HEAD
-=======
-
-firebase.initializeApp(firebaseConfig);
-const storageRef = firebase.storage().ref();
->>>>>>> 6cc61e078b7a450c33ae53f44a824be2c0fae098
 
 firebase.initializeApp(firebaseConfig);
 const storageRef = firebase.storage().ref();
 app.use(cookieParser);
 app.use(cors());
 app.use(bodyParser.json());
-exports.create=function (req, res) {
-        
+
+exports.create=function (req, res) {        
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
