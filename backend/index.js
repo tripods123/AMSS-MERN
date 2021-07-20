@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require('express');
 const app = express();
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
