@@ -24,7 +24,7 @@ app.use(json());
  * @apiError Wrong password The provided password was wrong.
  * @apiError UserNotFound   The <code>id</code> of the User was not found.
 */
-export function authenticate (req, res) {
+exports.authenticate=function(req, res) {
         
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
@@ -35,7 +35,7 @@ export function authenticate (req, res) {
             (async ()=>{
                 const user =await  db.collection('customer').find({'username':username}).toArray();
                 if(user[0]){
-                    compare(password,user[0]['password'],(err,hash_result)=>{
+                    bcrypt.compare(password,user[0]['password'],(err,hash_result)=>{
                         if(err)
                             return res.status(401).send(err);           
                         if(hash_result===false){
@@ -43,7 +43,7 @@ export function authenticate (req, res) {
                         }
                         if( user.length > 0){
                             const payload = {'_id': user[0]['_id'],type:'customer','username':username}
-                            let token = sign(payload, key,{expiresIn: '72h'});
+                            let token = jwt.sign(payload, key,{expiresIn: '72h'});
                             return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,secure:true,sameSite:'none'}).send({
                                 'links':[{title:'Home', path:'/'},{ title: `Product`, path: `/product/all/1` },{ title: `FAQ`, path: `/faq` },{ title: `About us`, path: `/about` },{ title: `Cart`, path: `/cart` },{ title: `Your Orders`, path: `/yorders` },{ title: `Logout`, path: `/logout` }],
                                 'userType':'customer'
@@ -61,7 +61,7 @@ export function authenticate (req, res) {
             (async()=>{
                 const user=await db.collection('seller').find({'username':username}).toArray();
                 if(user[0]){
-                    compare(password,user[0]['password'],(err,hash_result)=>{
+                    bcrypt.compare(password,user[0]['password'],(err,hash_result)=>{
                         if(err)
                             return res.status(401).send(err);           
                         if(hash_result===false){
@@ -69,7 +69,7 @@ export function authenticate (req, res) {
                         }
                         if(user.length > 0){
                             if(user[0]['isactive']===1){
-                                let token = sign({_id: user[0]['_id'],type:'seller','username':username}, key,{expiresIn: '72h'});
+                                let token = kwt.sign({_id: user[0]['_id'],type:'seller','username':username}, key,{expiresIn: '72h'});
                                 return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none', secure:true}).send({   
                                     'links':[{title:'Home', path:'/'},{ title: `About us`, path: `/about` },{ title: `Insert Products`, path: `/insertproduct` },{ title: `All Orders`, path: `/recievedorders` },{ title: `Pending Orders`, path: `/pendingorders` },{ title: `FAQ`, path: `/faq` },{ title: `Logout`, path: `/logout` }],
                                     'userType':'seller'                        
@@ -91,10 +91,10 @@ export function authenticate (req, res) {
 }
 
 
-export function checkstatus (req, res) {
+exports.checkstatus=function(req, res) {
     const token = req.cookies.token;
     if(token === null || token === undefined) return res.status(401).send({'links':[{title:'Home', path:'/'},{ title: `About us`, path: `/about` },{ title: `Product`, path: `/product/all/1` },{ title: `FAQ`, path: `/faq` },{ title: `Login`, path: `/login` }],'userType':''});
-    verify(token, key, (error,result)=>{
+    jwt.verify(token, key, (error,result)=>{
         if(error){
             return res.status(500).send(result);
         }
@@ -113,7 +113,7 @@ export function checkstatus (req, res) {
     }) 
 }
 
-export function signout (req, res) {
+exports.signout = function(req, res) {
     res.clearCookie('token',{httpOnly:true, sameSite:'none',secure:true});
     res.status(200).send({'links':[{title:'Home', path:'/'},{ title: `About us`, path: `/about` },{ title: `Product`, path: `/product/all/1` },{ title: `FAQ`, path: `/faq` },{ title: `Login`, path: `/login` }],userType:''});
 }

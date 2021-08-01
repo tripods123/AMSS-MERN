@@ -15,14 +15,13 @@ const upload = multer({storage:memoryStorage()}).single('image');
 const saltRounds = 10;
 app.use(cookieParser);
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
-export function create (req, res) {        
+exports.create=function(req, res) {        
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
         upload(req,res,function(err){
-
             if (err instanceof MulterError) {
                 return res.send(err);
                 console.log("hello -1");
@@ -30,11 +29,11 @@ export function create (req, res) {
                 console.log("hello 0");
                 return res.send(err);
              }else{
-                genSalt(saltRounds, function(err, salt) {
+                bcrypt.genSalt(saltRounds, function(err, salt) {
                     console.log("hello 1");
                     if(err)
                         return res.status(500).send(err);
-                    _hash(req.body.password, salt, function(err, hash) { 
+                    bcrypt.hash(req.body.password, salt, function(err, hash) { 
                         if(err)
                             return res.status(500).send(err);
                         const tobeinserted={
@@ -81,7 +80,7 @@ export function create (req, res) {
             });
         });
 }
-export function available (req, res) {
+exports.available=function(req, res) {
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
@@ -96,7 +95,7 @@ export function available (req, res) {
     });
 }
 
-export function isallowed (req, res) {
+exports.isallowed=function (req, res) {
     const token = req.cookies.token;
     if(token){
         verify(token, key, (err, decoded) => {
@@ -113,7 +112,7 @@ export function isallowed (req, res) {
     }
 }
 
-export function states (res) {
+exports.states=function(res) {
     console.log('here1');
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
