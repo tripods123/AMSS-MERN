@@ -48,6 +48,7 @@ exports.create=function(req, res) {
     });
 }
 exports.available=function(req, res) {
+    onsole.log(req);
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db("amss");
@@ -61,7 +62,7 @@ exports.available=function(req, res) {
         })();
     });
 }
-exports.isallowedgeneral=function (req, res) {
+exports.isallowedgeneral=function(req, res) {
     const token = req.cookies.token;
     if(token){
         verify(token, key, (err, decoded) => {
@@ -78,7 +79,7 @@ exports.isallowedgeneral=function (req, res) {
     }
 }
 
-exports.isallowed=function (req, res) {
+exports.isallowed=function(req, res) {
     const token = req.cookies.token;
     if(token){
         verify(token, key, (err, decoded) => {
