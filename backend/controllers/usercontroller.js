@@ -47,7 +47,7 @@ exports.create=function(req, res) {
         });
     });
 }
-exports.available=function (req, res) {
+exports.available=function(req, res) {
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db("amss");
