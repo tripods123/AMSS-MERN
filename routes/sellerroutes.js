@@ -5,4 +5,4 @@ router.post("/create",create);
 router.get("/allowed",isallowed);
 router.get("/availability/:username",available);
 router.get("/statescities",statescities);
-export default router;
+module.exports=  router;
