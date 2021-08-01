@@ -16,14 +16,14 @@ app.use(cors());
 app.use(json());
 
 const saltRounds = 10;
-export function create (req, res) {
+exports.create=function(req, res) {
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db('amss');
-        genSalt(saltRounds, function(err, salt) {
+        bcrypt.genSalt(saltRounds, function(err, salt) {
             if(err)
                 return res.status(500).send(err);
-            _hash(req.body.password, salt, function(err, hash) { 
+            bcrypt.hash(req.body.password, salt, function(err, hash) { 
                 if(err)
                     return res.status(500).send(err);
                 const tobeinserted={
@@ -39,7 +39,7 @@ export function create (req, res) {
                     const customer = await db.collection('customer').insertOne(tobeinserted);
                     if(customer.insertedCount===1){
                         const payload = {'_id': customer.insertedId,type:'customer','username':req.body.username}
-                        let token = sign(payload, key,{expiresIn: '72h'});
+                        let token = jwt.sign(payload, key,{expiresIn: '72h'});
                         return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none', secure:true}).send('OK');
                     }
                 })();
@@ -47,7 +47,7 @@ export function create (req, res) {
         });
     });
 }
-export function available (req, res) {
+exports.available=function (req, res) {
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
         const db = client.db("amss");
@@ -61,7 +61,7 @@ export function available (req, res) {
         })();
     });
 }
-export function isallowedgeneral (req, res) {
+exports.isallowedgeneral=function (req, res) {
     const token = req.cookies.token;
     if(token){
         verify(token, key, (err, decoded) => {
@@ -78,7 +78,7 @@ export function isallowedgeneral (req, res) {
     }
 }
 
-export function isallowed (req, res) {
+exports.isallowed=function (req, res) {
     const token = req.cookies.token;
     if(token){
         verify(token, key, (err, decoded) => {

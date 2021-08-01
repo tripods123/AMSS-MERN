@@ -16,7 +16,7 @@ const corsOptions = {
   credentials: true
 }
 
-app.use(json());
+app.use(bodyParser.json());
 app.use(urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
