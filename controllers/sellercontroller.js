@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 require('firebase/storage');
 global.XMLHttpRequest=require('xhr2');
-const upload = multer({storage:memoryStorage()}).single('image');
+const upload = multer({storage:multer.memoryStorage()}).single('image');
 const saltRounds = 10;
 app.use(cookieParser);
 app.use(cors());
