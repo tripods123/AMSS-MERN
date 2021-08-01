@@ -22,12 +22,16 @@ export function create (req, res) {
         if (err) throw err
         const db = client.db('amss');
         upload(req,res,function(err){
+
             if (err instanceof MulterError) {
                 return res.send(err);
+                console.log("hello -1");
              } else if (err) {
+                console.log("hello 0");
                 return res.send(err);
              }else{
                 genSalt(saltRounds, function(err, salt) {
+                    console.log("hello 1");
                     if(err)
                         return res.status(500).send(err);
                     _hash(req.body.password, salt, function(err, hash) { 
@@ -51,13 +55,14 @@ export function create (req, res) {
                             const isDuplicate =  await db.collection('seller').find({'username':req.body.username,'address':req.body.address}).toArray();
                             console.log(isDuplicate)
                             if(!isDuplicate[0]){
-                                
+                                console.log("no error 1");
                                 const seller = await db.collection('seller').insertOne(tobeinserted);
                                 if(seller.insertedCount===1){
                                         const uploadTask = storageRef.child('certificates/'+seller['insertedId']+'/documents/_'+Date.now()).put(req.file.buffer);
                                         uploadTask.on('state_changed', (snapshot) => {
-                                            
+                                            console.log("uploading");
                                         }, (error) => {
+                                            console.log("error");
                                         }, () => {
                                             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                                                 db.collection('seller').updateOne({'_id':ObjectId(seller['insertedId'])},{$set:{'companycertificate':downloadURL}},(err, object)=> {
