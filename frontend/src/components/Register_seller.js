@@ -93,23 +93,23 @@ function Register_seller(){
     }
     const onFormValueSubmit = () =>{
         if(availability === true && criteriaerror === false && passwordmatch === false){
+           const formData=new FormData();
+            formData.append('email',email);
+            formData.append('password',password);
+            formData.append('shopname',shopname);
+            formData.append('ownername',ownername);
+            formData.append('username',username);
+            formData.append('phone',phone);
+            formData.append('image', companycerti);
+            formData.append('address',address);
+            formData.append('city',city);
+            formData.append('state',state);
+            formData.append('gst',gstn);
+            formData.append('pincode',pincode);
             axios({
                 method:'POST',
                 url:'https://amss-backend.herokuapp.com/seller/create',
-                data:{
-                    'ownername': ownername,
-                    'shopname': shopname,
-                    'username': username,
-                    'address': address,
-                    'state': state,
-                    'city': city,
-                    'gst': gstn,
-                    'companycertificate': companycerti,
-                    'pincode': pincode,
-                    'password': password,
-                    'email': email,
-                    'phone': phone,
-                }
+                data:formData
             }).then((response)=>{
                 console.log(response);
             }).catch((error)=>{
@@ -118,6 +118,7 @@ function Register_seller(){
                         seterror(true);
                     }
                 }
+                console.log(error);
             });
         }
     }
@@ -157,7 +158,7 @@ function Register_seller(){
                                 <small>
                                     <label htmlFor="fileUpload" className='float-left'>Company Certificate in pdf only</label>
                                 </small>
-                                <input type="file" className='form-control shadow p-3 bg-body rounded' id="fileUpload" onChange={e => setcompanycerti(e.target.value)} required/><br/>
+                                <input type="file" className='form-control shadow p-3 bg-body rounded' id="fileUpload" onChange={e => setcompanycerti(e.target.files[0])} required/><br/>
                             </div>
                             <textarea className='form-control shadow p-3 bg-body rounded' placeholder="Address" onChange={e => setaddress(e.target.value)}></textarea><br/>
                             <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Pin code" onChange={e => setpincode(e.target.value)} required/><br/>
