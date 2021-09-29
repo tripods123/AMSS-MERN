@@ -17,7 +17,7 @@ const corsOptions = {
 }
 
 app.use(bodyParser.json());
-app.use(urlencoded({extended:false}));
+app.use(express.urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.set('trust proxy', 1);
