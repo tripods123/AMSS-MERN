@@ -30,8 +30,8 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  const app2 = firebase.initializeApp(firebaseConfig);
-  const storageRef = firebase.storage().ref();
+  const storageRef = firebase.initializeApp(firebaseConfig);
+ 
 exports.create=function(req, res) {        
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
