@@ -23,7 +23,7 @@ exports.create=function(req, res) {
         const db = client.db('amss');
         upload(req,res,function(err){
             if (err instanceof MulterError) {
-                return res.send(err);
+                return res.send(err+"yo yo yo");
                 console.log("hello -1");
              } else if (err) {
                 console.log("hello 0");
