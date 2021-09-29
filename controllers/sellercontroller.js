@@ -14,12 +14,25 @@ global.XMLHttpRequest=require('xhr2');
 const upload = multer({storage:multer.memoryStorage()}).single('image');
 const saltRounds = 10;
 app.use(cookieParser);
-firebase.initializeApp(config);
-var fb2 = firebase.firestore();
-const storageRef = fb2.storage().ref();
+
+
 app.use(cors());
 app.use(bodyParser.json());
-
+const firebaseConfig = {
+    apiKey: process.env.apiKey,
+    authDomain: process.env.apiDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.apiId,
+    measurementId: process.env.measurementId
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const storageRef2 = getFirestore(app);
+  const storageRef = storageRef2.storage().ref();
 exports.create=function(req, res) {        
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
