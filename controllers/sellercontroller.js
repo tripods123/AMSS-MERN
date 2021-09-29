@@ -30,7 +30,7 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  const app2 = initializeApp(firebaseConfig);
+  const app2 = firebase.initializeApp(firebaseConfig);
   const storageRef2 = getFirestore(app2);
   const storageRef = storageRef2.storage().ref();
 exports.create=function(req, res) {        
