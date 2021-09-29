@@ -14,7 +14,9 @@ global.XMLHttpRequest=require('xhr2');
 const upload = multer({storage:multer.memoryStorage()}).single('image');
 const saltRounds = 10;
 app.use(cookieParser);
-const storageRef = firebase.storage().ref();
+firebase.initializeApp(config);
+var fb2 = firebase.firestore();
+const storageRef = fb2.storage().ref();
 app.use(cors());
 app.use(bodyParser.json());
 
