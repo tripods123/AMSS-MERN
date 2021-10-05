@@ -22,7 +22,7 @@ export default function Loginmodal(props){
         e.preventDefault();
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/auth/signin',
+            url: 'https://amss-backend.herokuapp.com/auth/signin',
             withCredentials: true,
             data: {
                 'username' : logusername,
@@ -30,7 +30,7 @@ export default function Loginmodal(props){
                 'typeofuser':typeofuser
             }
           }).then((response) => {
-                window.location='http://localhost:3000/';
+                window.location='https://localhost:3000/';
           }, (error) => {
                 if(error.response!==undefined){
                     if(error.response.status===404){
