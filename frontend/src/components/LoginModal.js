@@ -8,7 +8,7 @@ const eye = <FontAwesomeIcon icon={faEye} />;
 export default function Loginmodal(props){ 
     const [logusername,setlogusername]=useState('');
     const [logpassword,setlogpassword]=useState('');
-    const [typeofuser,settypeofuser]=useState('Customer');
+    const [typeofuser,settypeofuser]=useState('customer');
     const [loginerror,setloginerror]=useState('');
     const [passwordShown, setPasswordShown] = useState(false);
           const togglePasswordVisiblity = () => {
@@ -23,14 +23,14 @@ export default function Loginmodal(props){
         axios({
             method: 'POST',
             url: 'https://amss-backend.herokuapp.com/auth/signin',
-            withCredentials: true,
             data: {
                 'username' : logusername,
                 'password' : logpassword,
                 'typeofuser':typeofuser
-            }
+            },
+            withCredentials: true,
           }).then((response) => {
-                window.location='https://localhost:3000/';
+                window.location='https://peaceful-stonebraker-22525a.netlify.app/';
           }, (error) => {
                 if(error.response!==undefined){
                     if(error.response.status===404){
