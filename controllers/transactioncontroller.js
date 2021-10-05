@@ -22,7 +22,7 @@ exports.getalltransactions=function (req, res) {
                     return res.status(500).send('internalerror');
                 }
                 (async()=>{
-                    const transaction = await db.collection('transactions').find({'customerid':ObjectId(result['_id'])}).toArray();
+                    const transaction = await db.collection('transaction').find({'customerid':ObjectId(result['_id'])}).toArray();
                     if(transaction.length > 0){
                         return res.status(200).send(transaction);
                     }else{
@@ -48,7 +48,7 @@ exports.single_transaction=function (req, res) {
                     return res.status(500).send('internalerror');
                 }
                 (async()=>{
-                    const transcation = await db.collection('transactions').find({'_id':ObjectId(tid)}).toArray();
+                    const transcation = await db.collection('transaction').find({'_id':ObjectId(tid)}).toArray();
                     if(transcation.length>0){
                         return res.status(200).send(transcation);
                     }else{
@@ -85,7 +85,7 @@ exports.insert=function (req, res) {
                     });
                     if(cart.length>0){
                         const tobeinserted={'customerid':ObjectId(result['_id']),'date':date,'products':cart[0]['cart'],'deliveryaddress':req.body.delivery_address,'clientname':req.body.name,'total_price':req.body.total_price};
-                        db.collection('transactions').insertOne(tobeinserted,function(err,obj){
+                        db.collection('transaction').insertOne(tobeinserted,function(err,obj){
                             db.collection('customer').updateOne({'_id':ObjectId(cid)},{$set:{'cart':[]}},function(err,obj){
                                 if(obj.modifiedCount===1) 
                                     return res.status(200).send("Done");
