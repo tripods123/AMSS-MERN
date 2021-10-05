@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const cors=require('cors');
 const cookieParser=require('cookie-parser');
-
 const authRouter = require('./routes/authenticationroutes');
 const userRouter = require('./routes/userroutes');
 const sellerRouter = require('./routes/sellerroutes');
@@ -17,7 +16,7 @@ const corsOptions = {
 }
 
 app.use(bodyParser.json());
-app.use(urlencoded({extended:false}));
+app.use(express.urlencoded({extended:false}));
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.set('trust proxy', 1);
