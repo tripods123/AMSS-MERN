@@ -11,6 +11,17 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 require('firebase/storage');
 global.XMLHttpRequest=require('xhr2');
+const firebaseConfig = {
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
+};
+
+firebase.initializeApp(firebaseConfig);
 const upload = multer({storage:multer.memoryStorage()}).single('image');
 const saltRounds = 10;
 app.use(cookieParser);
