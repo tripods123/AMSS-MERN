@@ -91,9 +91,10 @@ function Register_seller(){
             });
         }
     }
-    const onFormValueSubmit = () =>{
+    const onFormValueSubmit = (e) =>{
+        e.preventDefault();
         if(availability === true && criteriaerror === false && passwordmatch === false){
-           const formData=new FormData();
+            const formData=new FormData();
             formData.append('email',email);
             formData.append('password',password);
             formData.append('shopname',shopname);
@@ -138,7 +139,7 @@ function Register_seller(){
                     <div className='col-sm'><br/>
                         <h1 className='display-7'>New Seller Signup!</h1>
                         <br/>
-                        <form onSubmit={onFormValueSubmit}>
+                        <form onSubmit={e => onFormValueSubmit(e)}>
                             <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Owner Name" onChange={e => setownername(e.target.value)} required/><br/>
                             <input type="text" className='form-control shadow p-3 bg-body rounded' placeholder="Shop Name" onChange={e => setshopname(e.target.value)} required/><br/>
                             <input type="email" className='form-control shadow p-3 bg-body rounded' placeholder="Email"  onChange={e => setemail(e.target.value)} required/><br/>
