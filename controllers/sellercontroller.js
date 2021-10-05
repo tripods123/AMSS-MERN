@@ -16,7 +16,7 @@ const saltRounds = 10;
 app.use(cookieParser);
 app.use(cors());
 app.use(bodyParser.json());
-
+const storageRef = firebase.storage().ref();
 exports.create=function(req, res) {        
     MongoClient.connect(process.env.mongo_url,{ useUnifiedTopology: true }, function (err, client) {
         if (err) throw err
