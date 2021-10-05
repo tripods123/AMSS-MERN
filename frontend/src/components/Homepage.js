@@ -5,13 +5,13 @@ function Homepage(){
 		<div>
 			<div className="row justify-content-start">
 				<div className="col-sm">
-					<img src="/img/download.png" width="800px" height="600px"></img>
+					<img src="img/download.jpg" alt="placeholder"></img>
 				</div>
 				<div className="col-sm">
-					<img src="/img/download.png" width="800px" height="600px"></img>
+					<img src="img/download.jpg"  alt="placeholder"></img>
 				</div>
 				<div className="col-sm">
-					<img src="/img/download.png" width="800px" height="600px"></img>
+					<img src="/img/download.jpg"  alt="placeholder"></img>
 				</div>
 			</div>
 		</div>
