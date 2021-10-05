@@ -114,10 +114,14 @@ function Register_seller(){
             }).then((response)=>{
                 console.log(response);
             }).catch((error)=>{
-                if(error !== undefined){
-                    if(error.response.status === 500){
-                        seterror(true);
-                    }
+                if(error === undefined){
+                    return;
+                }
+                if(error.response===undefined){
+                    return;
+                }
+                if(error.response.status === 500){
+                    seterror(true);
                 }
                 console.log(error);
             });
