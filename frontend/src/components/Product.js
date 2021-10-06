@@ -16,7 +16,7 @@ export default class Product extends React.Component{
 		if(this.state.sort===false){
 			axios({
 				method: 'GET',
-				url: 'http://localhost:5000/product/'+this.props.match.params.type+'/'+this.props.match.params.page,
+				url: 'http://amss-backend.herokuapp.com/product/'+this.props.match.params.type+'/'+this.props.match.params.page,
 			}).then((response) => {
 				currentComponent.setState({products:response.data});
 			}).catch((error) => {
@@ -29,7 +29,7 @@ export default class Product extends React.Component{
 		this.setState({sort:true});
 		axios({
 			method: 'GET',
-			url: 'http://localhost:5000/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort
+			url: 'http://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort
 		}).then((response) => {
 			this.setState({products:response.data});
 		}).catch((error) => {

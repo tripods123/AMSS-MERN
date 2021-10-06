@@ -44,7 +44,8 @@ exports.authenticate=function(req, res) {
                         if( user.length > 0){
                             const payload = {'_id': user[0]['_id'],type:'customer','username':username}
                             let token = jwt.sign(payload, key,{expiresIn: '72h'});
-                            return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,secure:true,sameSite:'none'}).send({
+                            res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,secure:true,sameSite:'none'})
+                            return res.send({
                                 'links':[{title:'Home', path:'/'},{ title: `Product`, path: `/product/all/1` },{ title: `FAQ`, path: `/faq` },{ title: `About us`, path: `/about` },{ title: `Cart`, path: `/cart` },{ title: `Your Orders`, path: `/yorders` },{ title: `Logout`, path: `/logout` }],
                                 'userType':'customer'
                             });
@@ -70,7 +71,8 @@ exports.authenticate=function(req, res) {
                         if(user.length > 0){
                             if(user[0]['isactive']===1){
                                 let token = jwt.sign({_id: user[0]['_id'],type:'seller','username':username}, key,{expiresIn: '72h'});
-                                return res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none', secure:true}).send({   
+                                res.cookie('token', token, {expires: new Date(Date.now() + 72 * 3600000),httpOnly:true,sameSite:'none', secure:true});
+                                return res.send({   
                                     'links':[{title:'Home', path:'/'},{ title: `About us`, path: `/about` },{ title: `Insert Products`, path: `/insertproduct` },{ title: `All Orders`, path: `/recievedorders` },{ title: `Pending Orders`, path: `/pendingorders` },{ title: `FAQ`, path: `/faq` },{ title: `Logout`, path: `/logout` }],
                                     'userType':'seller'                        
                                 });
