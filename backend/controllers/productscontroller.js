@@ -42,7 +42,7 @@ exports.create=function (req, res) {
                                 console.log('done');
                                 path.push(downloadURL);
                                 if(path.length===4){
-                                    const tobeinserted={'productname':req.body.productname,'productdescription':req.body.productdescription,'image':path,'brand':req.body.brand,'price':parseInt(req.body.productprice),'producttype':req.body.producttype,'sellerid':ObjectId(id)};
+                                    const tobeinserted={'name':req.body.name,'description':req.body.description,'image':path,'brand':req.body.brand,'price':parseInt(req.body.price),'type':req.body.type,'sellerid':ObjectId(id)};
                                     db.collection('products').insertOne(tobeinserted,(err, object)=> {
                                         if(object){
                                             return res.status(200).send('AOK!');            
