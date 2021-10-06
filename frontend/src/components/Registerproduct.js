@@ -27,9 +27,9 @@ export default function Register_product (props){
             data: formData,
             withCredentials: true,
         }).then(()=>{
-
+            setStored(false);
         }).catch(()=>{
-
+            setStored(false);
         });
     }
     if(stored === false){
