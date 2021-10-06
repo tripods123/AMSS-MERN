@@ -10,13 +10,16 @@ import logout from './Logout';
 import Register from './Register';
 import Registerseller from './Register_seller';
 import PrivateRouteSeller from './Privaterouteseller';
+import Privateroutecustomer from './Privateroutecustomer';
 import Register_product from './Registerproduct';
+import Yorders from './Yorders';
+import Singleorder from './Singleorder';
 const Mainrouter = () => {
     return (
         <Switch>
             <Route path="/" exact component={Homepage}/>
             <Route path="/about" component={About}/>
-            <Route path="/cart"  component={Cart}/>
+            <Privateroutecustomer path="/cart"  component={Cart}/>
             <Route path="/product/:type/:page"  component={Product}/>
             <Route path="/faq"  component={Faq}/>
             <Route path="/registercustomer" component={Register}/>
@@ -24,6 +27,8 @@ const Mainrouter = () => {
             <Route path="/productdisplay/:productId" component={ProductDisplay}/>
             <Route path="/registerseller" component={Registerseller}/>
             <PrivateRouteSeller path="/insertproduct" component={Register_product}/>
+            <Privateroutecustomer exact path="/yorders/:id" component={Singleorder}/>
+            <Privateroutecustomer path="/yorders" component={Yorders}/>
         </Switch>
     );
 }

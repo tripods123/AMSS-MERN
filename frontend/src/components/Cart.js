@@ -31,7 +31,7 @@ class Cart extends React.Component{
 		e.preventDefault();
 		axios({
 			method: 'POST',
-			url: 'http://localhost:5000/transaction/insert',
+			url: 'https://amss-backend.herokuapp.com/transaction/insert',
 			withCredentials: true,
 			data:{
 				delivery_address:this.state.address_line_1+'\n'+this.state.address_line_2+'\n'+this.state.area+'\n'+this.state.city+'-'+this.state.pincode+'\n'+this.state.state,
@@ -48,7 +48,7 @@ class Cart extends React.Component{
 		e.preventDefault();
 		axios({
 			method: 'DELETE',
-			url: 'http://localhost:5000/cart/delete',
+			url: 'https://amss-backend.herokuapp.com/cart/delete',
 			withCredentials: true,
 			data:{
 				'pid':e.target.value
@@ -63,16 +63,17 @@ class Cart extends React.Component{
 		const fetchcart = () => {
 			axios({
 				method: 'GET',
-				url: 'http://localhost:5000/cart/getcart',
+				url: 'https://amss-backend.herokuapp.com/cart/getcart',
 				withCredentials: true,
 			  }).then((response) => {
+				  console.log(response.data['cart'])
 					this.setState({fetched:true});
-					this.setState({cart:response.data[0]['cart'],total_price:response.data[0]['total_price']});
+					this.setState({cart:response.data['cart'],total_price:response.data['total_price']});
 			  }).catch((error) => {
 					this.setState({fetched:true});
 					if(error.response!==undefined){
 						if(error.response.status===403){
-							window.location='http://localhost:3000/login';
+							window.location='https://peaceful-stonebraker-22525a.netlify.app/';
 						}
 					}
 			  });
@@ -85,6 +86,7 @@ class Cart extends React.Component{
 		}else if(this.state.fetched === 'loading'){
 			return(<Loadingspinner/>);
 		}else{
+			console.log(this.state.cart);
 			if(this.state.cart.length!==0){
 				return (
 					<div className='table-responsive'>
@@ -109,9 +111,9 @@ class Cart extends React.Component{
 							</thead>
 							<tbody>
 								{this.state.cart.map((e) => (
-									<tr>
+									<tr key={e._id}>
 										<td>
-											<Link to={"/productdisplay/"+e._id}>{e.productname}</Link>
+											<Link to={"/productdisplay/"+e._id}>{e.name}</Link>
 										</td>
 										<td>
 											{e.quantity}
