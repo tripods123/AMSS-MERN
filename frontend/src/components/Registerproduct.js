@@ -5,7 +5,7 @@ export default function Register_product (props){
     const [productname, setName] = useState();
     const [brand, setBrand] = useState();
     const [price, setPrice] = useState();
-    const [type, setType] = useState();
+    const [type, setType] = useState('engine');
     const [description, setDescription] = useState();
     const [stored, setStored] = useState(false);
     const submit = (e) =>{
