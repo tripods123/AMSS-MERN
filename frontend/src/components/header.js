@@ -1,28 +1,28 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Loginmodal from './LoginModal';
 import '../App.css';
 import {Link} from 'react-router-dom';
 
 function Header(){
-	const links = [
+	const [links,setLinks]=useState([
 		{title:'Home', path:'/'},
 		{ title: `About us`, path: `/about` },
 		{ title: `Product`, path: `/product/all/1` },
 		{ title: `FAQ`, path: `/faq` },
-		{ title: `Login`, path: `/login` }];
-	//const [links,setLinks]=useState([]);
+		{ title: `Login`, path: `/login` }]);
 	useEffect(()=>{
-		// axios({
-		// 	method:'GET',
-		// 	url:'https://amss-backend.herokuapp.com/auth/getlinks',
-		// 	withCredentials:true
-		// }).then((response)=>{
-		// 	setLinks(response.data);
-		// }).catch((error)=>{
-		// 	setLinks([]);
-		// })
+		axios({
+			method:'GET',
+			url:'https://amss-backend.herokuapp.com/auth/getstatus',
+			withCredentials:true
+		}).then((response)=>{
+			setLinks(response.data.links);
+		}).catch((error)=>{
+			console.log(error.response);
+			setLinks(error.response.data.links);
+		})
 	},[]);
-	//get links from backend
     return (
 		<nav className='navbar navbar-expand-lg navbar-light' style={{'backgroundColor':'#B0E0E6'}}>
             <div className='container-fluid'>
@@ -52,9 +52,6 @@ function Header(){
 					</div>
                 </div>
             </div>
-			<div>
-
-			</div>
         </nav>
     );
   }
