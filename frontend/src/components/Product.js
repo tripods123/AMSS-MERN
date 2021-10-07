@@ -19,7 +19,7 @@ export default class Product extends React.Component{
 		if(this.state.sort===false){
 			axios({
 				method: 'GET',
-				url: 'http://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/NAN/NAN/'+this.props.match.params.page,
+				url: 'https://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/NAN/NAN/'+this.props.match.params.page,
 			}).then((response) => {
 				currentComponent.setState({products:response.data,fetched:true});
 			}).catch((error) => {
@@ -32,7 +32,7 @@ export default class Product extends React.Component{
 		this.setState({sort:true});
 		axios({
 			method: 'GET',
-			url: 'http://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort
+			url: 'https://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort
 		}).then((response) => {
 			this.setState({products:response.data,fetched:true});
 		}).catch((error) => {
