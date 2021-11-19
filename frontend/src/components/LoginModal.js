@@ -34,11 +34,12 @@ export default function Loginmodal(props){
           }, (error) => {
                 if(error.response!==undefined){
                     if(error.response.status===404){
-                        alert("username or password is wrong!");
                         setloginerror('Username or password is wrong');
                     }
+                    if(error.response.status===401){
+                        alert("username or password is wrong!");
+                    }
                 }else{
-                    alert("username or password is wrong!");
                     setloginerror('something went wrong');
                 }
           });
