@@ -32,7 +32,7 @@ export default class Product extends React.Component{
 		this.setState({sort:true});
 		axios({
 			method: 'GET',
-			url: 'https://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort
+			url: 'https://amss-backend.herokuapp.com/product/sort/'+this.props.match.params.type+'/'+sortData.price+'/'+sortData.sort+'/'+this.props.match.params.page,
 		}).then((response) => {
 			this.setState({products:response.data,fetched:true});
 		}).catch((error) => {
