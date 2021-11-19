@@ -82,7 +82,7 @@ function Register_seller(){
         if(username!==''){
             axios({
                 method: 'GET',
-                url: 'http://amss-backend.herokuapp.com/seller/availability/'+username,
+                url: 'https://amss-backend.herokuapp.com/seller/availability/'+username,
                 withCredentials: true
             }).then((response)=>{
                 setusernameavailability(response.data);
