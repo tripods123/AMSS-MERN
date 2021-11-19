@@ -8,7 +8,6 @@ export default function Singleorder(props){
 	const [fetched, setisFetched] = useState(false);
     const [transaction, setTransaction] = useState();
 	useEffect(()=>{
-        console.log(props)
 		axios({
             method: 'GET',
             url:'https://amss-backend.herokuapp.com/transaction/'+props.match.params.id,

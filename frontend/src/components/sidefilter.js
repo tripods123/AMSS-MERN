@@ -59,7 +59,7 @@ export default class Sidefilter extends React.Component{
     		    				</select>
                             </div>		
                             <br/>
-                            <button type='submit' className='btn btn-primary'>Submit</button>
+                            <button type='submit' className='btn btn-primary'data-bs-dismiss="modal">Submit</button>
                         </form>
                     </div>
                 </div>

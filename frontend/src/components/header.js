@@ -19,7 +19,6 @@ function Header(){
 		}).then((response)=>{
 			setLinks(response.data.links);
 		}).catch((error)=>{
-			console.log(error.response);
 			setLinks(error.response.data.links);
 		})
 	},[]);

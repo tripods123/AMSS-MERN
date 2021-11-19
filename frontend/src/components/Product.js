@@ -42,36 +42,40 @@ export default class Product extends React.Component{
 	render(){
 		if(this.state.fetched===false && this.state.error===false){
 			return(<LoadingSpinner />);
-		}else if(this.state.fetched!==false && this.state.error===false){
-			return (
-				<div className='container'>
-					<br/>
-					<div className='row justify-contents-center'>
-						<div className='col-2'>
-							<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Filter/Sort</button>
-							<div className="modal fade"id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div className='modal-dialog modal-fullscreen-sm-down'>
-										<div className='modal-content'>
-										<div className="modal-header">
-        									<h5 className="modal-title" id="exampleModalLabel">Sort and Filter</h5>
-        									<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      								</div>
-										<div className='modal-body'>
-											<Sidefilter onSubmitForm={this.handleSubmit}/>
+		}else if(this.state.fetched!==false && this.state.error===false ){
+			if(this.state.products.length>0){
+				return (
+					<div className='container'>
+						<br/>
+						<div className='row justify-contents-center'>
+							<div className='col-2'>
+								<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Filter/Sort</button>
+								<div className="modal fade"id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div className='modal-dialog modal-fullscreen-sm-down'>
+											<div className='modal-content'>
+											<div className="modal-header">
+        										<h5 className="modal-title" id="exampleModalLabel">Sort and Filter</h5>
+        										<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      								</div>
+											<div className='modal-body'>
+												<Sidefilter onSubmitForm={this.handleSubmit}/>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<hr/>
-					<div className='row justify-contents-start'>
-						<div className='col-12'>
-							<Singleproductlist data={this.state.products}/>	
+						<hr/>
+						<div className='row justify-contents-start'>
+							<div className='col-12'>
+								<Singleproductlist data={this.state.products}/>	
+							</div>
 						</div>
 					</div>
-				</div>
-			);
+				);
+			}else{
+				return(<h3>No products match the criteria</h3>);
+			}
 		}else{
 			return(<h3>Error fetching data from server</h3>);
 		}

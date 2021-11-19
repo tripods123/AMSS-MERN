@@ -66,7 +66,6 @@ class Cart extends React.Component{
 				url: 'https://amss-backend.herokuapp.com/cart/getcart',
 				withCredentials: true,
 			  }).then((response) => {
-				  console.log(response.data['cart'])
 					this.setState({fetched:true});
 					this.setState({cart:response.data['cart'],total_price:response.data['total_price']});
 			  }).catch((error) => {
@@ -86,7 +85,6 @@ class Cart extends React.Component{
 		}else if(this.state.fetched === 'loading'){
 			return(<Loadingspinner/>);
 		}else{
-			console.log(this.state.cart);
 			if(this.state.cart.length!==0){
 				return (
 					<div className='table-responsive'>
