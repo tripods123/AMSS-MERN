@@ -21,19 +21,6 @@ export default class Sidefilter extends React.Component{
     render(){
 	    return (
             <div className='container'>
-                <div className='row justify-contents-start'>
-			        <form>
-				        <h3>Categories</h3>
-            		    <ul className='list-group'>
-                            <li className='list-group-item'><Link to="/product/all">All</Link></li>
-                            <li className='list-group-item'><Link to="/product/sunglasses">Sunglasses</Link></li>
-                            <li className='list-group-item'><Link to="/product/spectacles">Spectacles</Link></li>
-                            <li className='list-group-item'><Link to="/product/contact_lens">Contact Lens</Link></li>
-                        </ul>
-                        <br/>
-                    </form>
-                </div>
-                <hr/>
 		        <div className='row justify-contents-start'>
                     <h4>Filters</h4>
 			        <div>
