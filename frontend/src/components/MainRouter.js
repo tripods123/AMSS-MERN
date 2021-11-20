@@ -14,6 +14,7 @@ import Privateroutecustomer from './Privateroutecustomer';
 import Register_product from './Registerproduct';
 import Yorders from './Yorders';
 import Singleorder from './Singleorder';
+import Pendingorders from './PendingOrders';
 const Mainrouter = () => {
     return (
         <Switch>
@@ -29,6 +30,7 @@ const Mainrouter = () => {
             <PrivateRouteSeller path="/insertproduct" component={Register_product}/>
             <Privateroutecustomer exact path="/yorders/:id" component={Singleorder}/>
             <Privateroutecustomer path="/yorders" component={Yorders}/>
+            <PrivateRouteSeller path="/pendingorders" component={Pendingorders}/>
         </Switch>
     );
 }
