@@ -63,9 +63,8 @@ exports.delete=function (req, res) {
                             object[0]['total_price']=total_price[0]['total_price'];
                             return res.status(200).send(object);
                         });
-                    }else if(result.length===0){
-                        return res.status(200).send([]);
                     }
+                    return res.status(200).send([]);
                 })();
             });
         }
