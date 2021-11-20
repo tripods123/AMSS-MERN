@@ -54,7 +54,7 @@ class Cart extends React.Component{
 				'pid':e.target.value
 			}
 		  }).then((response) => {
-				this.setState({cart:response.data[0]['cart']?response.data[0]['cart']:[],total_price:response.data[0]['total_price']?response.data[0]['total_price']:0});
+				this.setState({cart:response.data[0].length>0? response.data[0]['cart']:[],total_price:response.data[0]['total_price']?response.data[0]['total_price']:0});
 		  }).catch((error) => {
 				console.log(error);
 		  });
