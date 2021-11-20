@@ -53,7 +53,6 @@ export default function Pendingorders(props){
 								<thead>
 									<tr>
 										<th>Product Name</th>
-										<th>Lens Details</th>
 										<th>Client Name</th>
 										<th>Quantity</th>
 										<th>delivery Address</th>
