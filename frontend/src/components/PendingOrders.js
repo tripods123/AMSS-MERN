@@ -19,7 +19,8 @@ export default function Pendingorders(props){
 					'transaction_id':transactionid,
 					'awb':awb,
 					'delivery_partner':deliveryPartner
-                }
+                },
+                withCredentials:true,
             }).then((response)=>{
                 return response.data;
             });
@@ -29,9 +30,7 @@ export default function Pendingorders(props){
 		axios({
             method:'GET',
             url:'https://amss-backend.herokuapp.com/order/getallpending',
-            Headers:{
-                withCredentials:true
-            }
+            withCredentials:true,
         }).then((response)=>{
                 setPendingOrders(response.data);
                 setFetched(true);
