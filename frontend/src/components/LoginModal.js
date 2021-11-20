@@ -30,7 +30,7 @@ export default function Loginmodal(props){
             },
             withCredentials: true,
           }).then((response) => {
-                window.location='https://peaceful-stonebraker-22525a.netlify.app/';
+                window.location='http://peaceful-stonebraker-22525a.netlify.app/';
           }, (error) => {
                 if(error.response!==undefined){
                     if(error.response.status===404){
