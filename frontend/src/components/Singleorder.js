@@ -48,6 +48,8 @@ export default function Singleorder(props){
                         	        	                            <h5 className="card-title"><Link to={'/productdisplay/'+products._id}>{products.productname}</Link></h5>
                                         	                        <p className="card-text">Quantity: <small className="text-muted">{products.quantity}</small></p>
                         	                	                    <p className="card-text">Total price: <small className='text-muted'>{parseInt(products.price)*parseInt(products.quantity)}</small></p>
+																	<p className="card-text">Delivery Partner: <small className='text-muted'>{products.delivery_partner ? 'Not Yet Dispatched' : products.delivery_partner}</small></p> 
+									<p className="card-text">AWB No.: <small className='text-muted'>{products.awbno ? 'Not yet dispatched' : products.awbno}</small></p> 
                             	                	            </div>
                                 	                	    </div>
 	                                	                </div>
