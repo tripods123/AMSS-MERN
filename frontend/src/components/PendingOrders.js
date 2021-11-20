@@ -67,7 +67,6 @@ export default function Pendingorders(props){
 										return(
 											<tr>
 												<td>{order['products']['productname']}</td>
-												<td><Showprescription lens={order['products']['lens_details']}/></td>
 												<td>{order['clientname']}</td>
 												<td>{order['products']['quantity']}</td>
 												<td>{order['deliveryaddress']}</td>
