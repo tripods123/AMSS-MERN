@@ -13,7 +13,7 @@ export default function Pendingorders(props){
 		e.preventDefault();
 		if(awb!=='' && deliveryPartner!==''){
 			axios({
-                url:'https://opticonnect-backend.herokuapp.com/order/setdelivery',
+                url:'https://amss-backend.herokuapp.com/order/setdelivery',
                 method:'POST',
                 data:{
                     'product_id':productid,
@@ -29,7 +29,7 @@ export default function Pendingorders(props){
 	useEffect(()=>{
 		axios({
             method:'GET',
-            url:'https://opticonnect-backend.herokuapp.com/order/getallpending',
+            url:'https://amss-backend.herokuapp.com/order/getallpending',
             Headers:{
                 withCredentials:true
             }
