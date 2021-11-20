@@ -63,6 +63,8 @@ exports.delete=function (req, res) {
                             object[0]['total_price']=total_price[0]['total_price'];
                             return res.status(200).send(object);
                         });
+                    }else if(result.length===0){
+                        return res.status(200).send([]);
                     }
                 })();
             });
@@ -96,7 +98,6 @@ exports.addtocart=function (req, res) {
                         const cart= await db.collection('customer').find({ '_id': ObjectID(cid),'cart._id':ObjectId(product_id)}).toArray();
                         if(cart.length > 0){
                             product[0]['quantity']=1;
-                            product[0]['lens_details']=req.body.lens_details;
                             for(let index=0;index<cart[0]['cart'].length;index++){
                                 if(cart[0]['cart'][index]['_id']==product_id){
                                     product[0]['quantity']=cart[0]['cart'][index]['quantity']+1;
@@ -110,8 +111,7 @@ exports.addtocart=function (req, res) {
                                 });     
                             }
                         }else{
-                            product[0]['quantity']=1;
-                            product[0]['lens_details']=req.body.lens_details;                    
+                            product[0]['quantity']=1;                   
                             db.collection('customer').updateOne({ '_id': ObjectID(cid)},{  $addToSet:{'cart': product[0] } },{upsert : true},function(err, object) {
                                 return res.status(200).send(object);
                             }); 
