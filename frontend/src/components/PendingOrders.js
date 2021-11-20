@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Loadingspinner from './Loadingspinner';
-import Showprescription from './Showprescription';
-import Trackinginput from './Trackinginput';
+import Trackinginput from './TrackingInput';
 import axios from 'axios';
 export default function Pendingorders(props){
     const [pendingOrders, setPendingOrders] = useState();

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 export default function TrackingInput(props){
 	const clicked = (e) =>{
 		e.preventDefault();
